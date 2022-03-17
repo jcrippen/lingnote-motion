@@ -1,0 +1,2635 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% The cruft above tells TeX editors (e.g. TeXShop) what this file contains.
+
+%% Only tested with XeLaTeX.
+%\RequireXeTeX
+
+%% Unicode normalization of input text.
+%%  0: no normalization (default)
+%%  1: normalize to NFC
+%%  2: normalize to NFD
+\XeTeXinputnormalization 1
+
+%% FIle prefix.
+%% This is the unchanging part of all file names for this document.
+\def \FILEPREFIX {lingnote-motion}
+
+%% The Memoir class.
+%% The manual is memman.pdf.
+\documentclass[12pt,letterpaper,oneside,article]{memoir}
+
+%% LaTeX3 command parsing.
+%% Should be used by all modern, right thinking LaTeX programmers.
+\usepackage{xparse}
+
+%%%
+%%% Memoir configuration.
+%%%
+
+\input{config/\FILEPREFIX-memconf}
+
+%%%
+%%% Font configuration.
+%%%
+
+\input{config/\FILEPREFIX-fonts}
+\input{config/\FILEPREFIX-fonts-symbols}
+
+%%%
+%%% Bibliography configuration.
+%%%
+
+\input{config/\FILEPREFIX-bib}
+
+%%%
+%%% Example and glossing configuration.
+%%%
+
+\input{config/\FILEPREFIX-expex}
+
+%%%
+%%% Other packages.
+%%%
+\input{config/\FILEPREFIX-other}
+
+%%%
+%%% Hyperlinks and crossreferences.
+%%%
+
+\input{config/\FILEPREFIX-hyper}
+
+%%%
+%%% Miscellaneous macrology.
+%%%
+
+\input{config/\FILEPREFIX-macrology}
+
+%%%
+%%% Morphology colour highlighting.
+%%%
+
+\input{config/\FILEPREFIX-colours}
+
+%%%
+%%% The document.
+%%%
+\begin{document}
+
+\title{Linguistic notes on Tlingit motion verbs}
+\author{\textit{Dzéiwsh} James A.\ Crippen}
+
+\maketitle
+\tableofcontents
+
+\clearpage
+\section{Introduction}\label{sec:intro}
+
+There are five major morphosemantic classes of verbs in the Tlingit lexicon: activity, state, achievement, motion, and position.%
+\footnote{\cite{leer:1991} calls these “processive”, “stative”, “eventive”, “motion”, and “positional”, respectively.
+The term “active” is also sometimes used for activity verbs \parencites{leer:1978b}{edwards:2009} and occasionally the term “neuter” is used for state verbs following Dene (Athabaskan) practice \parencites{leer:1978b}.}
+They are sometimes referred to as “verb theme categories” following the traditional description of Dene (Athabaskan) langauges \parencites{kari:1979}{axelrod:1993}, though this technically also includes other features like conjugation class membership and stem variation.
+The labels for these verb classes correspond to general semantic concepts that are sketched in (\ref{ex:intro-classes}) 
+
+\pex\label{ex:intro-classes}%
+\a	activity verbs: durative events
+\a	state verbs: states in general
+\a	achievement verbs: instantaneous events
+\a	motion verbs: change of location events
+\a	position verbs: states of existence at a location or in a configuration
+\xe
+
+The five morphosemantic classes of verbs in Tlingit are traditionally distinguished by a set of morphosyntactic diagnostics that involve aspect inflection and conjugation class membership.
+The pattern of these diagnostics is shown in (\ref{ex:intro-classes-parameters}).
+
+\ex\label{ex:intro-classes-parameters}%
+\setlength{\tabcolsep}{0.75ex}
+\begin{tabular}[t]{lccccc}
+Eventuality	& Imperfective	& Impfv. has		& Perfective	& Lexical	& Conj.\ class\\
+class		& available?	& stative prefix?	& available?	& conj.\ class?	& repetitive?\\
+\midrule
+activity	& ✓		& ✗			& ✓		& ✓		& ✓\\
+state		& ✓		& ✓			& ✓		& ✓		& ✓\\
+achievement	& ✗		& n/a			& ✓		& ✓		& ✓\\
+\addlinespace[0.5em]
+motion		& ✗		& n/a			& ✓		& ✗		& ✗\\
+position	& ✓		& ✗			& ✗		& ?		& ?\\
+\end{tabular}
+\xe
+
+The motion and position verbs are distinct from the other three in a few different ways.
+Their conjugation class membership status is complicated, they have unusual repetitive (iterative) imperfective aspect forms, and their semantic properties are not yet well defined.
+Also the status of conjugation class membership for the position verbs is specifically unclear because the usual diagnostics for conjugation class membership cannot be applied to them.
+In particular, the usual inflectional aspect contexts for determining conjugation class – imperative progressive, prospective, and perfective – are not known to occur for position verbs.
+\textcite[71–74, 324–328]{leer:1991} tacitly assumes that position verbs are not specified for conjugation class, but this has yet to be conclusively shown.
+
+Tlingit lexically distinguishes states, activities, and achievements, but apparently not accomplishments (durative telic events).
+Accomplishments can be created by adding the ‘terminative’ derivation which adds a 
+preverb \fm{yan=} \~\ \fm{yax̱=} \~\ \fm{yán-de=} ‘ending, terminating, finishing, completing’ along with (re)assignment to the \fm{∅} conjugation class.
+It is unclear if the lack of lexical accomplishments is an accident, if it reflects something significant about the semantics, or if it is an error in the description and analysis of the language.
+
+\subsection{Imperfective and perfective aspect diagnostics}\label{sec:intro-asp}
+
+Imperfective aspect is the label for an aspectual inflection (traditionally a “mode”) of verbs which denotes an eventuality whose time (\textit{ET}) contains the time of reference to the eventuality (\textit{RT}) so that the eventuality is incomplete when referred to.
+The imperfective aspect has two basic forms: marked and unmarked.%
+\footnote{The traditional description of imperfective aspect following \textcite{leer:1991} also includes unmarked imperfective forms that have a repetitive suffix (\fm{-ch}, \fm{-x̱}, \fm{-k}, \fm{-t}, \fm{-tʼ}, \fm{-sʼ}, \fm{-lʼ}), considering both to be “primary imperfectives”.
+I consider imperfective aspect with a repetitive suffix to be derived \parencite[527]{crippen:2019}.}
+Unmarked imperfective forms are the norm, where there is no overt aspect prefix in the imperfective form.
+Marked imperfective aspect has an overt conjugation prefix: one of \fm{n-}, \fm{g̱-}, or \fm{g-} depending on the conjugation class membership of the verb (see section \ref{sec:intro-conj}).
+The sentences in (\ref{ex:intro-asp-mkunmk}) illustrate an unmarked imperfective aspect form and a marked imperfective aspect form.
+
+\pex\label{ex:intro-asp-mkunmk}%
+\a\label{ex:intro-asp-mkunmk-unmk}%
+\exrtcmt{unmarked imperfective}%
+\begingl
+	\gla	Téel \rlap{x̱ahóon.} @ {} @ {} //
+	\glb	téel x̱a- \rt[²]{hun} -μμH //
+	\glc	shoe \xx{1sg·s}- \rt[²]{sell} -\xx{var} //
+	\gld	shoe \rlap{\xx{ncnj}.\xx{impfv}.I.sell} {} {} //
+	\glft	‘I sell shoes.’, ‘I am selling shoes.’
+		//
+\endgl
+\a\label{ex:intro-asp-mkunmk-mk}%
+\exrtcmt{marked imperfective}%
+\begingl
+	\gla	Aan \rlap{naalée.} @ {} @ {} @ {} //
+	\glb	aan na- μ- \rt[¹]{liᴸ} -μμH //
+	\glc	town \xx{ncnj}- \xx{stv}- \rt[¹]{distant} -\xx{var} //
+	\gld	town \rlap{\xx{ncnj}.\xx{impfv}.be.distant} {} {} {} //
+	\glft	‘Town is distant, far away.’
+		//
+\endgl
+\xe
+
+Imperfective aspect in Tlingit is detailed in \cite[ch.\ 6 §2.1]{crippen:2019}.
+This includes some details on the repetitive imperfectives that denote iterated events, both those that are predictable from conjugation class membership and those that are not, as well as more data on the marked imperfective aspect.
+
+Perfective aspect is the label for an aspectual inflection of verbs which denotes an eventuality whose time (\textit{ET}) is outside the time of reference to the eventuality (\textit{RT}) so that the eventuality is complete when referred to.
+Perfective aspect has three different forms.
+Two perfective forms have dedicated perfective aspect prefixes: \fm{wu-} \~\ \fm{μw-} (also Teslin, Carcross \fm{m-}) and \fm{u-}.
+The \fm{u-} is used only in certain forms of verbs that belong to the \fm{∅} conjugation class and the \fm{wu-} \~\ \fm{μw-} is used for the other three conjugation classes (\fm{n}, \fm{g̱}, \fm{g}).
+Other than conjugation class there is no distinct difference of meaning between the two kinds so they are usually considered together as allomorphic variants of each other.
+The sentences in (\ref{ex:intro-asp-pfv}) give perfectives corresponding to the imperfectives in (\ref{ex:intro-asp-mkunmk}) above.
+
+\pex\label{ex:intro-asp-pfv}%
+\a\label{ex:intro-asp-pfv-act}%
+\exrtcmt{perfective}%
+\begingl
+	\gla	Téel \rlap{x̱waahoon.} @ {} @ {} @ {} @ {} //
+	\glb	téel μw- x̱- μ- \rt[²]{hun} -μμL //
+	\glc	shoe \xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[²]{sell} -\xx{var} //
+	\gld	shoe \rlap{\xx{ncnj}.\xx{pfv}.I.sell} {} {} {} {} //
+	\glft	‘I sold shoes.’, ‘I have sold shoes.’
+		//
+\endgl
+\a\label{ex:intro-asp-pfv-stv}%
+\exrtcmt{perfective}%
+\begingl
+	\gla	Aan \rlap{woolee.} @ {} @ {} @ {} //
+	\glb	aan wu- μ- \rt[¹]{liᴸ} -μμL //
+	\glc	town \xx{pfv}- \xx{stv}- \rt[¹]{distant} -\xx{var} //
+	\gld	town \rlap{\xx{ncnj}.\xx{pfv}.distant} {} {} {} //
+	\glft	‘Town became distant, far away.’
+		//
+\endgl
+\xe
+
+The third form of perfective aspect has an overt conjugation class prefix instead of a perfective prefix.
+This kind of perfective aspect – traditionally known as “realizational” as well as “consecutive” and “admonitive” in different contexts – is relatively infrequent and is mostly not considered in discussions of perfective aspect.
+Perfective aspect is discussed in \cite[ch.\ 6 §2.2]{crippen:2019} and the perfective forms with conjugation prefixes are specifically detailed in §2.2.3 (pp.\ 568–576).
+
+Unmarked imperfective aspect forms may denote either activities or states.
+States have an overt stative prefix \fm{i-} \~\ \fm{ya-} \~\ \fm{wa-} \~\ \fm{μ-} immediately before the verb stem.
+Activities do not have a stative prefix.
+The sentences in (\ref{ex:intro-asp-act}) and (\ref{ex:intro-asp-stv}) illustrate unmarked imperfective forms in comparison with perfective forms where there is an overt aspect prefix \fm{wu-}.
+
+\pex\label{ex:intro-asp-act}%
+\a\label{ex:intro-asp-act-impfv}%
+\exrtcmt{imperfective activity}%
+\begingl
+	\gla	Dzískʼw \rlap{toox̱á.} @ {} @ {} //
+	\glb	dzískʼw	too- \rt[²]{x̱a} -μH //
+	\glc	moose \xx{1pl·s}- \rt[²]{eat} -\xx{var} //
+	\gld	moose \rlap{\xx{zcnj}.\xx{impfv}.we.eat} {} {} //
+	\glft	‘We eat moose.’, ‘We are eating moose.’
+		//
+\endgl
+\a\label{ex:intro-asp-act-pfv}%
+\exrtcmt{perfective}%
+\begingl
+	\gla	Dzískʼw \rlap{wutuwax̱áa.} @ {} @ {} @ {} @ {} //
+	\glb	dzískʼw	wu- tu- wa- \rt[²]{x̱a} -μμH //
+	\glc	moose \xx{pfv}- \xx{1pl·s}- \xx{stv}- \rt[²]{eat} -\xx{var} //
+	\gld	moose \rlap{\xx{zcnj}.\xx{pfv}.we.eat} {} {} {} {} //
+	\glft	‘We ate moose.’, ‘We have eaten moose.’
+		//
+\endgl
+\xe
+
+\pex\label{ex:intro-asp-stv}%
+\a\label{ex:intro-asp-stv-impfv}%
+\exrtcmt{imperfective state}%
+\begingl
+	\gla	X̱at @ \rlap{yanéekw.} @ {} @ {} //
+	\glb	x̱at= ya- \rt[¹]{nikw} -μμH //
+	\glc	\xx{1sg·o}= \xx{stv}- \rt[¹]{sick} -\xx{var} //
+	\gld	me= \rlap{\xx{gcnj}.\xx{impfv}.be.sick} {} {} //
+	\glft	‘I am sick.’
+		//
+\endgl
+\a\label{ex:intro-asp-stv-pfv}%
+\exrtcmt{perfective}%
+\begingl
+	\gla	X̱at @ \rlap{woonéekw.} @ {} @ {} @ {} //
+	\glb	x̱at= wu- μ- \rt[¹]{nikw} -μμH //
+	\glc	\xx{1sg·o}= \xx{pfv}- \xx{stv}- \rt[¹]{sick} -\xx{var} //
+	\gld	me= \rlap{\xx{gcnj}.\xx{pfv}.sick} {} {} {} //
+	\glft	‘I became sick.’, ‘I got sick.’
+		//
+\endgl
+\xe
+
+Marked imperfective aspect only occurs for certain verbs that denote a state which is spatially oriented in some direction.
+The conjugation prefix is semantically meaningful in that it reflects the direction in which the state is oriented.
+The state is conceived of as extending in space either horizontally (\fm{n-}), downward (\fm{g̱-}), or upward (\fm{g-}).
+Because of this the traditional label for these is “extensional state”.
+Use of an unmarked imperfective form for extensional state roots is ungrammatical.
+
+\pex
+\a\label{ex:intro-asp-stv-impfv}%
+\ljudge{*}%
+\exrtcmt{*imperfective state}%
+\begingl
+	\gla	Yá \rlap{áakʼw} @ {} \rlap{yadlaan.} @ {} @ {} //
+	\glb	yá áa -kʼw ya- \rt[¹]{dlan} -μμL //
+	\glc	\xx{prox} lake -\xx{dim} \xx{stv}- \rt[¹]{deep} -\xx{var} //
+	\gld	this \rlap{pond} {} \rlap{\xx{g̱cnj}.\xx{impfv}.be.deep} {} {} //
+	\glft	intended: ‘This pond is deep.’
+		//
+\endgl
+\a\label{ex:intro-asp-stv-extimpfv}%
+\exrtcmt{imperfective extensional state}%
+\begingl
+	\gla	Yá \rlap{áakʼw} @ {} \rlap{g̱aadlaan.} @ {} @ {} @ {} //
+	\glb	yá áa -kʼw g̱a- μ- \rt[¹]{dlan} -μμL //
+	\glc	\xx{prox} lake -\xx{dim} \xx{g̱cnj}- \xx{stv}- \rt[¹]{deep} -\xx{var} //
+	\gld	this \rlap{pond} {} \rlap{\xx{g̱cnj}.\xx{impfv}.be.deep} {} {} {} //
+	\glft	‘This pond is deep.’
+		//
+\endgl
+\a\label{ex:intro-asp-stv-pfv}%
+\exrtcmt{perfective}%
+\begingl
+	\gla	Yá \rlap{áakʼw} @ {} \rlap{woodlaan.} @ {} @ {} @ {} //
+	\glb	yá áa -kʼw wu- μ- \rt[¹]{dlan} -μμL //
+	\glc	\xx{prox} lake -\xx{dim} \xx{pfv}- \xx{stv}- \rt[¹]{deep} -\xx{var} //
+	\gld	this \rlap{pond} {} \rlap{\xx{g̱cnj}.\xx{pfv}.deep} {} {} {} //
+	\glft	‘This pond became deep.’
+		//
+\endgl
+\xe
+
+Achievement verbs do not permit either unmarked or marked imperfective aspect forms.
+This is shown in (\ref{ex:intro-asp-ach}) with the root \fm{\rt[¹]{dutʼ}} ‘hiccup’ which denotes an instantaneous event of hiccupping.
+
+\pex\label{ex:intro-asp-ach}%
+\a\label{ex:intro-asp-ach-impfv}%
+\ljudge{*}%
+\exrtcmt{*imperfective achievement}%
+\begingl
+	\gla	X̱at @ \rlap{dóotʼ.} @ {} @ {} //
+	\glb	x̱at= \rt[¹]{dutʼ} -μμH //
+	\glc	\xx{1sg·o}= \rt[¹]{hiccup} -\xx{var} //
+	\gld	me \rlap{\xx{zcnj}.\xx{impfv}.hiccup} {} {} {} //
+	\glft	intended: ‘I hiccup.’, ‘I am hiccuping.’
+		//
+\endgl
+\a\label{ex:intro-asp-ach-extimpfv}%
+\ljudge{*}%
+\exrtcmt{*imperfective extensional achievement}%
+\begingl
+	\gla	X̱at @ \rlap{gaadóotʼ.} @ {} @ {} @ {} //
+	\glb	x̱at= ga- μ- \rt[¹]{dutʼ} -μμH //
+	\glc	\xx{1sg·o}= \xx{gcnj}- \xx{stv}- \rt[¹]{hiccup} -\xx{var} //
+	\gld	me \rlap{\xx{gcnj}.\xx{impfv}.hiccup} {} {} {} //
+	\glft	intended: ‘I hiccup.’, ‘I am hiccuping.’
+		//
+\endgl
+\a\label{ex:intro-asp-ach-pfv}%
+\exrtcmt{perfective}%
+\begingl
+	\gla	X̱at @ \rlap{uwadútʼ.} @ {} @ {} @ {} //
+	\glb	x̱at= u- wa- \rt[¹]{dutʼ} -μH //
+	\glc	\xx{1sg·o}= \xx{zpfv}- \xx{stv}- \rt[¹]{hiccup} -\xx{var} //
+	\gld	me \rlap{\xx{zcnj}.\xx{pfv}.hiccup} {} {} {} //
+	\glft	‘I hiccuped.’
+		//
+\endgl
+\xe
+
+Given the data above, we have the distributional patterns in (\ref{ex:intro-asp-distribution}) that show the aspect inflection distinctions between activity verbs, state verbs, and achievement verbs.
+
+\ex\label{ex:intro-asp-distribution}%
+\begin{tabular}[t]{lccc}
+Eventuality	& Imperfective	& Imperfective 		& Perfective\\
+class		& available?	& stative prefix?	& available?\\
+\midrule
+activity	& ✓		& ✗			& ✓\\
+state		& ✓		& ✓			& ✓\\
+achievement	& ✗		& n/a			& ✓\\
+\end{tabular}
+\xe
+
+
+\subsection{Conjugation class diagnostics}\label{sec:intro-conj}
+
+Conjugation class is a kind of inflection class in Tlingit.
+It is identified primarily by the conjugation prefixes \fm{n-}, \fm{g̱-}, and \fm{g-} that are in complementary distribution along with the lack of a prefix represented as \fm{∅} \parencite[577–580]{crippen:2019}.
+Aspect, mood, and modality (“mode”) inflection for each verb is partly determined by conjugation class membership.
+Sometimes this inflection requires an overt instance of the conjugation prefix, such as in the imperative mood.
+The root \fm{\rt[²]{hun}} ‘sell’ is shown with imperative mood marking in (\ref{ex:intro-conj-impsell}) and only the form with the \fm{n-} conjugation prefix in (\ref{ex:intro-conj-impsell-n}) is grammatical.%
+\footnote{The \fm{∅} conjugation imperative is represented with an empty space glossed as \xx{zcnj}.
+This is an analytic convenience for comparison with the other imperative forms and should not be taken to mean that a null element actually exists in the grammar.}
+The stem variation of imperative forms is partly determined by conjugation class and the \fm{-μμL} stem for \fm{n}, \fm{g̱}, and \fm{g} versus the \fm{-μH} stem for \fm{∅} conjugation class reflects this.
+
+\pex\label{ex:intro-conj-impsell}%
+\a\label{ex:intro-conj-impsell-n}%
+\exrtcmt{n conj.\ imperative}%
+\begingl
+	\gla	\rlap{Nahoon!} @ {} @ {} //
+	\glb	na- \rt[²]{hun} -μμL //
+	\glc	\xx{ncnj}- \rt[²]{sell} -\xx{var} //
+	\gld	\rlap{3.\xx{ncnj}.\xx{imp}.you·\xx{sg}.sell} {} {} //
+	\glft	‘Sell it!’
+		//
+\endgl
+\a\label{ex:intro-conj-impsell-gh}%
+\ljudge{*}%
+\exrtcmt{*g̱ conj.\ imperative}%
+\begingl
+	\gla	\rlap{G̱ahoon!} @ {} @ {} //
+	\glb	g̱a- \rt[²]{hun} -μμL //
+	\glc	\xx{g̱cnj}- \rt[²]{sell} -\xx{var} //
+	\gld	\rlap{3.\xx{g̱cnj}.\xx{imp}.you·\xx{sg}.sell} {} {} //
+	\glft	intended: ‘Sell it!’
+		//
+\endgl
+\a\label{ex:intro-conj-impsell-g}%
+\ljudge{*}%
+\exrtcmt{*g conj.\ imperative}%
+\begingl
+	\gla	\rlap{Gahoon!} @ {} @ {} //
+	\glb	ga- \rt[²]{hun} -μμL //
+	\glc	\xx{gcnj}- \rt[²]{sell} -\xx{var} //
+	\gld	\rlap{3.\xx{gcnj}.\xx{imp}.you·\xx{sg}.sell} {} {} //
+	\glft	intended: ‘Sell it!’
+		//
+\endgl
+\a\label{ex:intro-conj-impsell-z}%
+\ljudge{*}%
+\exrtcmt{*∅ conj.\ imperative}%
+\begingl
+	\gla	\rlap{Hún!} @ {} @ {} //
+	\glb	{} \rt[²]{hun} -μH //
+	\glc	\xx{zcnj}\· \rt[²]{sell} -\xx{var} //
+	\gld	\rlap{3.\xx{zcnj}.\xx{imp}.you·\xx{sg}.sell} {} {} //
+	\glft	intended: ‘Sell it!’
+		//
+\endgl
+\xe
+
+Activity verbs, state verbs, and achievement verbs are lexically specified for at least one conjugation class.
+Thus the activity verb \fm{\rt[²]{hun}} ‘sell’ in (\ref{ex:intro-conj-impsell}) is lexically specified for the \fm{n} conjugation class and so has the \fm{n-} conjugation prefix in imperative forms.
+Similarly, the activity verb \fm{\rt[²]{taw}} ‘steal’ in (\ref{ex:intro-conj-impsteal}) is lexically specified for the \fm{∅} conjugation class and so it has no conjugation prefix rather than an overt conjugation prefix in imperative forms.
+
+\pex\label{ex:intro-conj-impsteal}%
+\a\label{ex:intro-conj-impsteal-z}%
+\exrtcmt{∅ conj.\ imperative}%
+\begingl
+	\gla	\rlap{Táw!} @ {} @ {} //
+	\glb	{} \rt[²]{taw} -μH //
+	\glc	\xx{zcnj}\· \rt[²]{steal} -\xx{var} //
+	\gld	\rlap{3.\xx{zcnj}.\xx{imp}.you·\xx{sg}.steal} {} {} //
+	\glft	‘Steal it!’
+		//
+\endgl
+\a\label{ex:intro-conj-impsteal-n}%
+\ljudge{*}%
+\exrtcmt{*n conj.\ imperative}%
+\begingl
+	\gla	\rlap{Nataaw!} @ {} @ {} //
+	\glb	na- \rt[²]{taw} -μμL //
+	\glc	\xx{ncnj}- \rt[²]{steal} -\xx{var} //
+	\gld	\rlap{3.\xx{ncnj}.\xx{imp}.you·\xx{sg}.sell} {} {} //
+	\glft	intended: ‘Steal it!’
+		//
+\endgl
+\a\label{ex:intro-conj-impsteal-gh}%
+\ljudge{*}%
+\exrtcmt{*g̱ conj.\ imperative}%
+\begingl
+	\gla	\rlap{G̱ataaw!} @ {} @ {} //
+	\glb	g̱a- \rt[²]{taw} -μμL //
+	\glc	\xx{g̱cnj}- \rt[²]{steal} -\xx{var} //
+	\gld	\rlap{3.\xx{g̱cnj}.\xx{imp}.you·\xx{sg}.steal} {} {} //
+	\glft	intended: ‘Steal it!’
+		//
+\endgl
+\a\label{ex:intro-conj-impsteal-g}%
+\ljudge{*}%
+\exrtcmt{*g conj.\ imperative}%
+\begingl
+	\gla	\rlap{Gataaw!} @ {} @ {} //
+	\glb	ga- \rt[²]{taw} -μμL //
+	\glc	\xx{gcnj}- \rt[²]{steal} -\xx{var} //
+	\gld	\rlap{3.\xx{gcnj}.\xx{imp}.you·\xx{sg}.steal} {} {} //
+	\glft	intended: ‘Steal it!’
+		//
+\endgl
+\xe
+
+Although it often seems like a verb is specified for only one conjugation class, there are a number of documented cases where a verb is lexically specified for more than one conjugation class \parencite[615–616]{crippen:2019}.
+Usually there are two classes specified, often either \fm{∅} and something else or \fm{n} and something else.
+There is commonly an obvious difference in translation between the two conjugation classes, but sometimes the semantic distinction is not clearly documented.
+There may be other morphology accompanying the change in conjugation class (e.g.\ qualifier \fm{ka-} ‘horizontal surface’ or causative \fm{s-} \~\ \fm{l-}), but some cases have no added affixes.
+One case of this is the root \fm{\rt[²]{sʼuᴴw}} ‘chop’ which is attested with the \fm{∅}, \fm{n}, and \fm{g̱} conjugation classes \parencites[09/274–275]{leer:1973}[526]{leer:1976}.
+This area of the grammar needs further research to clarify what semantic contributions regularly arise from different lexically specified conjugation classes.
+
+There is no consistent connection between conjugation class and eventuality class so that activity verbs, state verbs, and achievement verbs can be found with all four conjugation classes \parencite[614]{crippen:2019}.
+There is a distinct tendency for state verbs to be specified for the \fm{g} conjugation class \parencites[254]{leer:1991}[620]{crippen:2019}, but there are also state verbs among the other three classes.%
+\footnote{The comparative prefix \fm{k-} \~\ \fm{g-} used with comparative forms of some state verbs is partly homophonous with the \fm{g-} conjugation class prefix.
+This suggests a connection but it may just as well be accidental or from a purely historical relationship with no synchronic significance.}
+The number of verbs specified for the \fm{g̱} conjugation class seems to be the smallest followed by the \fm{g} conjugation class.
+There seem to be more verbs specified for \fm{∅} conjugation than for \fm{n} conjugation but this is only a general impression not backed by systematic lexical review.
+None of these distributional tendencies among the conjugation classes show any obvious connections to semantics, argument structure, stem variation, or any other lexical parameters.
+
+\subsubsection{Progressive, prospective, and preverbs}\label{sec:intro-conj-progprosp}
+
+Although the conjugation prefixes are used as the labels for the conjugation classes, the conjugation prefixes do not always reflect a verb’s conjugation class.
+Two aspects, the progressive aspect and the prospective aspect, regularly use a single conjugation prefix regardless of the lexical specification of the verb \parencite[628–633]{crippen:2019}.
+Compare the forms of the achievement verb based on \fm{\rt[¹]{nix̱}} ‘safe, recovered’ in (\ref{ex:intro-conj-safe}).
+The imperative in (\ref{ex:intro-conj-safe-imp}) shows that this verb is lexically specified for the \fm{g̱} conjugation class.
+Yet the progressive in (\ref{ex:intro-conj-safe-prog}) has the \fm{n-} conjugation prefix rather than \fm{g̱-}, and the prospective in (\ref{ex:intro-conj-safe-prosp}) has the \fm{g-} conjugation prefix rather than \fm{g̱-}.
+
+\pex\label{ex:intro-conj-safe}%
+\a\label{ex:intro-conj-safe-imp}%
+\exrtcmt{g̱ conj.\ imperative}%
+\begingl
+	\gla	Ee @ \rlap{\gm{g̱}aneex̱!} @ {} @ {} //
+	\glb	ee= \gm{g̱}a- \rt[¹]{nix̱} -μμL //
+	\glc	\xx{2sg·o}= \xx{g̱cnj}- \rt[¹]{safe} -\xx{var} //
+	\gld	you·\xx{sg} \rlap{\xx{g̱cnj}.\xx{imp}.safe} {} {} //
+	\glft	‘Become safe!’, ‘Recover!’
+		//
+\endgl
+\a\label{ex:intro-conj-safe-prog}%
+\exrtcmt{g̱ conj.\ progressive}%
+\begingl
+	\gla	Yei @ x̱at @ \rlap{\gm{n}aníx̱.} @ {} @ {} @ {} //
+	\glb	yei= x̱at= \gm{n}a- \rt[¹]{nix̱} -μH //
+	\glc	down= \xx{1sg·o}= \xx{ncnj}- \rt[¹]{safe} -\xx{var} //
+	\gld	down me \rlap{\xx{g̱cnj}.\xx{prog}.safe} //
+	\glft	‘I am becoming safe.’, ‘I am recovering.’
+		//
+\endgl
+\a\label{ex:intro-conj-safe-prosp}%
+\exrtcmt{g̱ conj.\ prospective}%
+\begingl
+	\gla	Yei @ x̱at @ \rlap{\gm{g}ug̱anéex̱.} @ {} @ {} @ {} @ {} //
+	\glb	yei= x̱at= \gm{g}- u- g̱a- \rt[¹]{nix̱} -μμH //
+	\glc	down= \xx{1sg·o}= \xx{gcnj}- \xx{irr}- \xx{mod}- \rt[¹]{safe} -\xx{var} //
+	\gld	down me \rlap{\xx{g̱cnj}.\xx{prosp}.safe} //
+	\glft	‘I will be(come) safe.’, ‘I will recover.’
+		//
+\endgl
+\xe
+
+In fact, all progressive aspect forms have \fm{n-} and all prospective aspect forms have \fm{g-}, supplanting whatever conjugation prefix might be expected by the conjugation class.
+But there is still evidence of the underlying \fm{g̱} conjugation class membership of the verb in (\ref{ex:intro-conj-safe}).
+Both the progressive in (\ref{ex:intro-conj-safe-prog}) and the prospective in (\ref{ex:intro-conj-safe-prosp}) are accompanied by the preverb \fm{yei=} ‘down’ which is specifically associated with the \fm{g̱} conjugation class.
+In contrast,  a \fm{g} conjugation verb like the activity verb \fm{\rt[²]{waᴴt}} ‘mature, grow up’ in (\ref{ex:intro-conj-grow}) instead has the preverb \fm{kei=} ‘up’ rather than \fm{yei=} ‘down’.
+
+\pex\label{ex:intro-conj-grow}%
+\a\label{ex:intro-conj-grow-imp}%
+\exrtcmt{g conj.\ imperative}%
+\begingl
+	\gla	Ee @ \rlap{\gm{g}awáat!} @ {} @ {} //
+	\glb	ee= \gm{g}a- \rt[¹]{waᴴt} -μH //
+	\glc	\xx{2sg·o}= \xx{gcnj}- \rt[¹]{mature} -\xx{var} //
+	\gld	you·\xx{sg}\· \rlap{\xx{gcnj}.\xx{imp}.mature} {} {} //
+	\glft	‘Grow up!’, ‘Mature!’
+		//
+\endgl
+\a\label{ex:intro-conj-grow-prog}%
+\exrtcmt{g conj.\ progressive}%
+\begingl
+	\gla	Kei @ x̱at @ \rlap{\gm{n}awát.} @ {} @ {} @ {} //
+	\glb	kei= x̱at= \gm{n}a- \rt[¹]{waᴴt} -μH -n //
+	\glc	up= \xx{1sg·o}= \xx{ncnj}- \rt[¹]{mature} -\xx{var} -\xx{nsfx} //
+	\gld	up me \rlap{\xx{g̱cnj}.\xx{prog}.mature} //
+	\glft	‘I am growing up.’, ‘I am maturing.’
+		//
+\endgl
+\a\label{ex:intro-conj-grow-prosp}%
+\exrtcmt{g conj.\ prospective}%
+\begingl
+	\gla	Kei @ x̱at @ \rlap{\gm{g}ug̱awáat.} @ {} @ {} @ {} @ {} //
+	\glb	kei= x̱at= \gm{g}- u- g̱a- \rt[¹]{waᴴt} -μμH //
+	\glc	up= \xx{1sg·o}= \xx{gcnj}- \xx{irr}- \xx{mod}- \rt[¹]{mature} -\xx{var} //
+	\gld	up me \rlap{\xx{g̱cnj}.\xx{prosp}.mature} //
+	\glft	‘I will grow up.’, ‘I will mature.’
+		//
+\endgl
+\xe
+
+The presence of a preverb \fm{yei=} ‘down’ or \fm{kei=} ‘up’ in the progressive or prospective aspects can therefore be used as a diagnostic for \fm{g̱} or \fm{g} conjugation class membership.
+Progressive aspect forms of \fm{∅} and \fm{n} conjugation class verbs both have the preverb \fm{yaa=} ‘along’ so they are not morphologically distinct.
+Prospective aspect forms of \fm{∅} and \fm{n} conjugation class verbs have no specific preverb so like the progressive aspect they are not morphologically distinct.
+Thus the progressive and prospective aspects incompletely reflect conjugation class membership.
+
+\subsubsection{Perfective and stem variation}\label{sec:intro-conj-pfv}
+
+The perfective aspect always has a perfective prefix \fm{wu-} \~\ \fm{μw-} or \fm{u-} that blocks the presence of a conjugation prefix, but unlike the progressive and prospective aspects there is no preverb that distinguishes conjugation class membership.
+There is however some indication of the conjugation class in the perfective aspect by way of stem variation.
+Specifically, a perfective aspect form of a \fm{∅} conjugation class verb has distinct stem variation in contrast with verbs of the \fm{n}, \fm{g̱}, and \fm{g} conjugation classes that follow a different stem variation pattern.
+The patterns of perfective aspect stem variation for the five different root shapes are illustrated in (\ref{ex:intro-conj-pfvstem-verbs}); the stem in each form is highlighted.
+
+\ex\label{ex:intro-conj-pfvstem-verbs}%
+\begin{tabular}[t]{llllcl}
+	&\multicolumn{2}{c}{\fm{∅} conj.}	& \multicolumn{3}{c}{\fm{n}\,/\fm{g̱}\,/\fm{g} conj.}\\
+	\cmidrule(lr){2-3}			\cmidrule(lr){4-6}
+Root shape
+	& Root		& Form			& Root		& Conj.	& Form\\
+\midrule
+CV	& \rt{x̱a}	& x̱waa\gm{x̱áa}		& \rt{ya}	& n	& x̱waa\gm{yaa}\\
+	&		& ‘I ate it.’		&		&	& ‘I packed it.’\\
+CVᴸ	& \rt{lʼaᴸ}	& x̱waa\gm{lʼáa}		& \rt{tʼiᴸ}	& g	& x̱waa\gm{tʼee}\\
+	&		& ‘I sucked it.’		&		&	&‘I found it.’\\
+CVC	& \rt{jaḵ}	& x̱waa\gm{jáḵ}		& \rt{g̱aḵ}	& g̱	& x̱waa\gm{g̱aaḵ}\\
+	&		& ‘I killed it.’		&		&	& ‘I visited her.’\\
+CVCʼ	& \rt{tletʼ}	& x̱waa\gm{tlétʼ}		& \rt{sʼelʼ}	& g̱	& x̱waa\gm{sʼéilʼ}\\
+	&		& ‘I licked it.’		&		&	& ‘I tore it.’\\
+CVᴴC	& \rt{.uᴴn}	& x̱waa\gm{.ún}		& \rt{shaᴴt}	& g	& x̱waa\gm{sháat}\\
+	&		& ‘I shot it.’		&		&	& ‘I grabbed it.’\\
+\end{tabular}
+\xe
+
+The patterns in (\ref{ex:intro-conj-pfvstem-verbs}) are summarized in (\ref{ex:intro-conj-pfvstem}).
+The CV and CVᴸ (open syllable) roots show a tone distinction between \fm{∅} and the other three conjugation classes: stems for the \fm{∅} conjugation class have a long vowel and high tone \fm{-μμH} where the other three classes have a long vowel and low tone \fm{-μμL}.
+The CVC, CVCʼ, and CVᴴC (closed syllable) roots show a length distinction and a partial tone distinction between \fm{∅} and the other three conjugation classes.
+Stems for the \fm{∅} conjugation class have a short vowel and high tone \fm{-μH} where the other three classes have a long vowel.
+This long vowel is low tone \fm{-μμL} for CVC roots, but due to phonological constraints against low tone the long vowel is high tone \fm{-μμH} for CVCʼ and CVᴴC roots.
+
+\ex\label{ex:intro-conj-pfvstem}%
+\exrtcmt{perfective stem variation}%
+\begin{tabular}[t]{lcc}
+Root shape	& \fm{∅} conj.	& \fm{n}\,/\fm{g̱}\,/\fm{g} conj.\\
+\midrule
+CV		& -μμH		& -μμL\\
+CVᴸ		& -μμH		& -μμL\\
+CVC		& -μH		& -μμL\\
+CVCʼ		& -μH		& -μμH\\
+CVᴴC		& -μH		& -μμH\\
+\end{tabular}
+\xe
+
+Some of these patterns are visible in earlier examples: in (\ref{ex:intro-asp-pfv}) there are \fm{-μμL} stems for \fm{n} conjugation class verbs with a CVC and CVᴸ root, in (\ref{ex:intro-asp-act-pfv}) there is a \fm{-μμH} stem for a \fm{∅} conjugation class verb with a CV root, in (\ref{ex:intro-asp-stv-pfv}) there is a \fm{-μμL} stem for a \fm{g̱} conjugation class verb with a CVC root, and in (\ref{ex:intro-asp-ach-pfv}) there is a \fm{-μH} stem for a \fm{∅} conjugation class verb with a CVCʼ root.
+
+There are exceptions to the stem variation system which includes some cases of perfective aspect stems. 
+Specifically, the root may have an ‘invariable stem’ which is a frozen form that cannot be modified by ordinary stem variation operations.
+The \fm{-μμH} stem in (\ref{ex:intro-asp-stv-pfv}) with \rt[¹]{nikw} ‘sick’ is an example of this where a \fm{g} conjugation class verb with a CVC root would otherwise be expected to have a \fm{-μμL} stem in the perfective aspect.
+Indeed, this root \rt[¹]{nikw} ‘sick’ occurs with the same \fm{-μμH} stem in almost all contexts, although it is occasionally seen with \fm{-μH}.
+These exceptions do not meaningfully detract from the sensitivity of perfective aspect stem variation to conjugation class since they are specific to individual lexical entries and are unrelated to conjugation class membership.
+
+\subsubsection{Repetitive imperfective suffixes}\label{sec:intro-conj-repimp}
+
+One further reflection of conjugation class is found in repetitive imperfective aspect forms.
+In particular, the lexically specified conjugation class of a verb predictably determines the selection of a repetitive suffix for a repetitive imperfective aspect form of the verb.
+A repetitive imperfective form is an unmarked imperfective aspect form with a repetitive suffix.
+There are eight repetitive suffixes: \fm{-ch}, \fm{-x̱}, \fm{-k}, \fm{-t}, \fm{-xʼ}, \fm{-tʼ}, \fm{-sʼ}, \fm{-lʼ}.
+All of these suffixes have the same basic semantic function of iterating an eventuality which thus gives rise to pluractional or pluristative meanings \parencite[527–537]{crippen:2019}.
+Some of the suffixes have specialized meanings – for example \fm{-t} usually denotes repeated contact with a point – but the semantics of the repetitive suffixes still need investigation \parencites[cf.][]{henderson:2013a}{mattiola:2020}.
+Also, because the repetitive suffixes iterate eventualities and a sequence of eventualities takes up time, the unmarked imperfective aspect is possible for achievements with repetitive suffixes.
+
+Each of the four conjugation classes  is closely correlated with a repetitive imperfective form.
+The data in (\ref{ex:intro-conj-rep-hiccup})—(\ref{ex:intro-conj-rep-grow}) illustrate four unaccusative intransitive achievement verbs that are respectively members of the \fm{∅}, \fm{n}, \fm{g̱}, and \fm{g} conjugation classes.
+The first form (a) in each set is an imperative which shows the conjugation class of the verb.
+The second form (b) in each set is a perfective.
+The third form (c) is an unmarked imperfective which by being ungrammatical confirms that each is an achievement verb.
+The fourth form (d) is a repetitive imperfective.
+Each repetitive imperfective form shows a different suffix: the \fm{∅} conjugation class verb in (\ref{ex:intro-conj-rep-hiccup-repimpfv}) has \fm{-x̱}, the \fm{n} conjugation class verb in (\ref{ex:intro-conj-rep-die-repimpfv}) has \fm{-k},%
+\footnote{The suffix \fm{-kw} is an allomorph of \fm{-k} which occurs in labialization contexts.
+The root \fm{\rt[¹]{naʷ}} ‘die’ is an instance of ‘occult labialization’ which is phonologically unpredictable and reflects historical loss of final \fm{w} \parencite[132–134, 849–850]{crippen:2019}.}
+the \fm{g̱} conjugation class verb in (\ref{ex:intro-conj-rep-safe-repimpfv}) has \fm{-ch}, and the \fm{g} conjugation class verb in (\ref{ex:intro-conj-rep-grow-repimpfv}) also has \fm{-ch}.
+
+\pex\label{ex:intro-conj-rep-hiccup}%
+\a\label{ex:intro-conj-rep-hiccup-imp}%
+\exrtcmt{∅ conj.\ imperative}%
+\begingl
+	\gla	Ee @ \rlap{dútʼ!} @ {} //
+	\glb	ee= \rt[¹]{dutʼ} -μH //
+	\glc	\xx{2sg·o}= \rt[¹]{hiccup} -\xx{var} //
+	\gld	you·\xx{sg} \rlap{\xx{zcnj}.\xx{imp}.hiccup} {} //
+	\glft	‘Hiccup!’
+		//
+\endgl
+\a\label{ex:intro-conj-rep-hiccup-pfv}%
+\exrtcmt{∅ conj.\ perfective}%
+\begingl
+	\gla	X̱at @ \rlap{uwadútʼ.} @ {} @ {} @ {} //
+	\glb	x̱at= u- wa- \rt[¹]{dutʼ} -μH //
+	\glc	\xx{1sg·o}= \xx{zpfv}- \xx{stv}- \rt[¹]{hiccup} -\xx{var} //
+	\gld	me= \rlap{\xx{zcnj}.\xx{pfv}.hiccup} {} {} {} //
+	\glft	‘I hiccuped’
+		//
+\endgl
+\a\label{ex:intro-conj-rep-hiccup-impfv}%
+\ljudge{*}%
+\exrtcmt{*imperfective}%
+\begingl
+	\gla	X̱at @ \rlap{dóotʼ.} @ {} @ {} //
+	\glb	x̱at= \rt[¹]{dutʼ} -μμH //
+	\glc	\xx{1sg·o}= \rt[¹]{hiccup} -\xx{var} //
+	\gld	me \rlap{\xx{zcnj}.\xx{impfv}.hiccup} {} {} {} //
+	\glft	intended: ‘I hiccup.’, ‘I am hiccuping.’
+		//
+\endgl
+\a\label{ex:intro-conj-rep-hiccup-repimpfv}%
+\exrtcmt{-x̱ repetitive imperfective}%
+\begingl
+	\gla	X̱at @ \rlap{dútʼ\gm{x̱}.} @ {} @ {} //
+	\glb	x̱at= \rt[¹]{dutʼ} -μH -\gm{x̱} //
+	\glc	\xx{1sg·o}= \rt[¹]{hiccup} -\xx{var} -\xx{rep} //
+	\gld	me \rlap{\xx{zcnj}.\xx{impfv}.hiccup.\xx{rep}} {} {} //
+	\glft	‘I am hiccuping.’, ‘I keep hiccuping’, ‘I repeatedly hiccup.’
+		//
+\endgl
+\xe
+
+\pex\label{ex:intro-conj-rep-die}%
+\a\label{ex:intro-conj-rep-die-imp}%
+\exrtcmt{n conj.\ imperative}%
+\begingl
+	\gla	Ee @ \rlap{naná!} @ {} @ {} //
+	\glb	ee= na- \rt[¹]{naʷ} -μH //
+	\glc	\xx{2sg·o}= \xx{ncnj}- \rt[¹]{die} -\xx{var} //
+	\gld	you·\xx{sg} \rlap{\xx{ncnj}.\xx{imp}.die} {} {} //
+	\glft	‘Die!’
+		//
+\endgl
+\a\label{ex:intro-conj-rep-die-pfv}%
+\exrtcmt{n conj.\ perfective}%
+\begingl
+	\gla	X̱at @ \rlap{woonaa.} @ {} @ {} @ {} //
+	\glb	x̱at= wu- μ- \rt[¹]{naʷ} -μμL //
+	\glc	\xx{1sg·o}= \xx{pfv}- \xx{stv}- \rt[¹]{die} -\xx{var} //
+	\gld	me= \rlap{\xx{ncnj}.\xx{pfv}.hiccup} {} {} {} //
+	\glft	‘I died’
+		//
+\endgl
+\a\label{ex:intro-conj-rep-die-impfv}%
+\ljudge{*}%
+\exrtcmt{*imperfective}%
+\begingl
+	\gla	X̱at @ \rlap{naa.} @ {} @ {} //
+	\glb	x̱at= \rt[¹]{naʷ} -μμL //
+	\glc	\xx{1sg·o}= \rt[¹]{die} -\xx{var} //
+	\gld	me \rlap{\xx{ncnj}.\xx{impfv}.die} {} {} {} //
+	\glft	intended: ‘I die.’, ‘I am dying.’
+		//
+\endgl
+\a\label{ex:intro-conj-rep-die-repimpfv}%
+\exrtcmt{-k repetitive imperfective}%
+\begingl
+	\gla	Yoo @ x̱at @ \rlap{yanáa\gm{kw}.} @ {} @ {} @ {} //
+	\glb	yoo= x̱at= ya- \rt[¹]{naʷ} -μH -\gm{kw} //
+	\glc	\xx{alt}= \xx{1sg·o}= \xx{stv}- \rt[¹]{die} -\xx{var} -\xx{rep} //
+	\gld	\xx{alt} me \rlap{\xx{ncnj}.\xx{impfv}.be.die.\xx{rep}} {} {} //
+	\glft	‘I keep dying.’, ‘I repeatedly die.’
+		//
+\endgl
+\xe
+
+\pex\label{ex:intro-conj-rep-safe}%
+\a\label{ex:intro-conj-rep-safe-imp}%
+\exrtcmt{g̱ conj.\ imperative}%
+\begingl
+	\gla	Ee @ \rlap{g̱aneex̱!} @ {} @ {} //
+	\glb	ee= g̱a- \rt[¹]{nix̱} -μμL //
+	\glc	\xx{2sg·o}= \xx{g̱cnj}- \rt[¹]{safe} -\xx{var} //
+	\gld	you·\xx{sg} \rlap{\xx{g̱cnj}.\xx{imp}.safe} {} {} //
+	\glft	‘Become safe!’, ‘Recover!’
+		//
+\endgl
+\a\label{ex:intro-conj-rep-safe-pfv}%
+\exrtcmt{g̱ conj.\ perfective}%
+\begingl
+	\gla	X̱at @ \rlap{wooneex̱.} @ {} @ {} @ {} //
+	\glb	x̱at= wu- μ- \rt[¹]{nix̱} -μμL //
+	\glc	\xx{1sg·o}= \xx{pfv}- \xx{stv}- \rt[¹]{safe} -\xx{var} //
+	\gld	me \rlap{\xx{g̱cnj}.\xx{pfv}.safe} {} {} {} //
+	\glft	‘I became safe.’, ‘I recovered.’
+		//
+\endgl
+\a\label{ex:intro-conj-rep-safe-impfv}%
+\ljudge{*}%
+\exrtcmt{*imperfective}%
+\begingl
+	\gla	X̱at @ \rlap{neex̱.} @ {} //
+	\glb	x̱at= \rt[¹]{nix̱} -μμL //
+	\glc	\xx{1sg·o}= \rt[¹]{safe} -\xx{var} //
+	\gld	me \rlap{\xx{g̱cnj}.\xx{impfv}.safe} {} //
+	\glft	intended: ‘I become safe.’, ‘I am recovering.’
+		//
+\endgl
+\a\label{ex:intro-conj-rep-safe-repimpfv}%
+\exrtcmt{-ch repetitive imperfective}%
+\begingl
+	\gla	Yei @ x̱at @ \rlap{níx̱\gm{ch}.} @ {} @ {} //
+	\glb	yei= x̱at= \rt[¹]{nix̱} -μH -\gm{ch} //
+	\glc	down= \xx{1sg·o}= \rt[¹]{safe} -\xx{var} -\xx{rep} //
+	\gld	down\• me \rlap{\xx{g̱cnj}.\xx{impfv}.safe.\xx{rep}} {} {} //
+	\glft	‘I repeatedly become safe.’, ‘I keep recovering.’
+		//
+\endgl
+\xe
+
+\pex\label{ex:intro-conj-rep-grow}%
+\a\label{ex:intro-conj-rep-grow-imp}%
+\exrtcmt{g conj.\ imperative}%
+\begingl
+	\gla	Ee @ \rlap{gawáat!} @ {} @ {} //
+	\glb	ee= ga- \rt[¹]{waᴴt} -μμH //
+	\glc	\xx{2sg·o}= \xx{gcnj}- \rt[¹]{mature} -\xx{var} //
+	\gld	you·\xx{sg} \rlap{\xx{gcnj}.\xx{imp}.mature} {} {} //
+	\glft	‘Grow up!’, ‘Mature!’
+		//
+\endgl
+\a\label{ex:intro-conj-rep-grow-pfv}%
+\exrtcmt{g conj.\ perfective}%
+\begingl
+	\gla	X̱at @ \rlap{woowáat.} @ {} @ {} @ {} //
+	\glb	x̱at= wu- μ- \rt[¹]{waᴴt} -μμH //
+	\glc	\xx{1sg·o}= \xx{pfv}- \xx{stv}- \rt[¹]{mature} -\xx{var} //
+	\gld	me \rlap{\xx{gcnj}.\xx{pfv}.mature} {} {} {} //
+	\glft	‘I grew up.’, ‘I matured.’
+		//
+\endgl
+\a\label{ex:intro-conj-rep-grow-impfv}%
+\ljudge{*}%
+\exrtcmt{*imperfective}%
+\begingl
+	\gla	X̱at @ \rlap{wáat.} @ {} //
+	\glb	x̱at= \rt[¹]{waᴴt} -μμH //
+	\glc	\xx{1sg·o}= \rt[¹]{mature} -\xx{var} //
+	\gld	me \rlap{\xx{gcnj}.\xx{impfv}.mature} {} //
+	\glft	intended: ‘I grow up.’, ‘I mature.’
+		//
+\endgl
+\a\label{ex:intro-conj-rep-grow-repimpfv}%
+\exrtcmt{-ch repetitive imperfective}%
+\begingl
+	\gla	Kei @ x̱at @ \rlap{wát\gm{ch}.} @ {} @ {} //
+	\glb	kei= x̱at= \rt[¹]{waᴴt} -μH -\gm{ch} //
+	\glc	up= \xx{1sg·o}= \rt[¹]{mature} -\xx{var} -\xx{rep} //
+	\gld	up me \rlap{\xx{gcnj}.\xx{impfv}.mature.\xx{rep}} {} //
+	\glft	‘I keep growing up.’, ‘I repeatedly mature.’
+		//
+\endgl
+\xe
+
+As with the progressive and prospective aspects, the repetitive imperfective forms for the \fm{g̱} and \fm{g} conjugation verbs show distinct directional preverbs \fm{yei=} ‘down’ and \fm{kei=} ‘up’.
+This allows the two classes to be reliably distinguished even though both repetitive imperfective forms use the same suffix \fm{-ch}.
+
+Not all verbs obey the relationship between repetitive imperfective form and lexically specified conjugation class.
+The repetitive suffixes \fm{-t}, \fm{-xʼ}, \fm{-tʼ}, \fm{-sʼ}, and \fm{-lʼ} are not associated with any conjugation class and instead occur in lexically specified repetitive imperfectives with limited sets of verbs \parencite[532–535]{crippen:2019}.%
+\footnote{Although they are currently analyzed as lexically specified, the repetitive suffixes presumably have distinct meanings that determine their compatibility with particular roots.
+Thus it is probably semantics rather than purely lexical specification that governs their distribution.
+This suggests that the connection between repetitive imperfective and conjugation class may help elucidate the semantics of the conjugation classes via the meanings of the repetitive suffixes.}
+Also the \fm{-ch}, \fm{-x̱}, and \fm{-k} suffixes can occur in lexically specified repetitive imperfectives with roots that do not belong to the expected conjugation class, and a few roots also seem to ‘dislike’ the repetitive imperfective form that is predicted by their conjugation class.
+Finally, the motion verbs are another major exception as detailed in section \ref{sec:motpos-motrep}.
+
+\subsubsection{Conjugation class summary}\label{sec:intro-conj-sum}
+
+The diagnostics for lexical conjugation class membership are summarized in (\ref{ex:intro-conj-sum-table}).
+Each row represents one of  the four conjugation classes, with labels in the first column.
+The second column gives the conjugation prefix associated with the conjugation class which can be found in forms like the imperfective mood and realizational aspect.
+The third column lists the preverb associated with the conjugation class, if any.
+The fourth column lists the repetitive suffix associated with the conjugation class.
+Finally, the fifth and sixth columns give the perfective stem variation forms associated with the conjugation class for a CV root and a CVC root.
+
+\ex\label{ex:intro-conj-sum-table}%
+\begin{tabular}[t]{cccccc}
+Conj.\ class	& Conj. pfx.	& Preverb	& Rep.\ sfx.	& Pfv.\ stem CV	& Pfv.\ stem CVC\\
+\midrule
+∅		&		&		& -x̱		& -μμH		& -μH\\
+n		& n-		&		& -k		& -μμL		& -μμL\\
+g̱		& g̱-		& yei=		& -ch		& -μμL		& -μμL\\
+g		& g-		& kei=		& -ch		& -μμL		& -μμL\\
+\end{tabular}
+\xe
+
+Most of the aspect/mood/modality (“mode”) inflections distinguish all four of the conjugation classes by the presence of a conjugation prefix in the same way as the imperative; these are specifically the habitual, hortative, potential, realizational (and derived admonitive and consecutive), conditional, contingent, and the marked imperfective.
+
+The remaining aspect/mood/modality inflections that do not have conjugation prefixes reflecting conjugation class are the progressive aspect, prospective aspect, perfective aspect, and the unmarked imperfective aspect.
+The progressive and prospective aspects distinguish \fm{g̱} and \fm{g} conjugation class verbs from others by the presence of a \fm{yei=} or \fm{kei=} preverb, and the perfective aspect distinguishes \fm{∅} conjugation class verbs from the others by distinct stem variation.
+The only aspect/mood/modality inflection that does not distinguish conjugation class at all is the unmarked imperfective aspect.
+Within this aspect inflection, the repetitive imperfective may or may not reflect conjugation class membership depending on the particular root; only the non-repetitive (ordinary) imperfective aspect completely fails to reflect conjugation class.
+It is not clear if this is semantically significant or not, and there is currently no obvious reason why specifically a non-iterative imperfective should be insensitive to conjugation class membership.
+
+\section{Motion and position verbs are different}\label{sec:motpos}
+
+With diagnostics for imperfective and perfective aspect on the one hand (sec.\ \ref{sec:intro-asp}) and for conjugation class membership on the other (sec.\ \ref{sec:intro-conj}), we can now turn to motion and position verbs.
+Motion verbs prohibit imperfective aspect but permit all other aspects, making them similar to achievement verbs (sec.\ \ref{sec:motpos-motasp}).
+Position verbs are the aspectual opposite of motion verbs: they permit imperfective aspect but prohibit all other aspects, making them appear on the one hand like activity verbs but on the other hand like no other class of verbs in the language (sec.\ \ref{sec:motpos-posasp}).
+Motion verbs generally occur with all four conjugation classes, showing no particular preference for any one of the four.
+Because of this, motion verbs are analyzed as not being lexically specified for conjugation class, instead being assigned one through a process called ‘motion derivation’ (sec.\ \ref{sec:motpos-motconj}).
+Position verbs do not show any signs of conjugation class membership because they only occur in the one aspectual inflection context where conjugation class is undetectable: non-iterative unmarked imperfective aspect (sec.\ \ref{sec:motpos-posconj}).
+Finally, motion verbs with the \fm{∅} conjugation class often have repetitive imperfective forms with suffixes other than the \fm{-x̱} predicted by the conjugation class (sec.\ \ref{sec:motpos-motrep}).
+
+\subsection{Motion verbs prohibit unmarked imperfectives}\label{sec:motpos-motasp}
+
+Motion verbs do not permit an unmarked imperfective aspect form although they permit all other aspect/mood/modality inflection.
+The verb root \fm{\rt[¹]{gut}} ‘sg. go’ is the canonical example of a motion verb.
+To begin with, the sentences in (\ref{ex:motpos-motasp}) illustrate this root with the the perfective, prospective, progressive, and habitual aspects,
+the imperative mood,%
+\footnote{In the imperative mood the roots \fm{\rt[¹]{gut}} ‘sg.\ go’, \fm{\rt[¹]{.at}} ‘pl.\ go’, and \fm{\rt[¹]{nuk}} ‘sg.\ sit’ all irregularly have a \fm{-μH} stem and lose their final consonant, together represented symbolically as -⊗ for ‘deletion’.
+This does not occur with any other aspect/mood/modality inflection nor with any other root.}
+the hortative modality and potential modality, and finally the now-archaic realizational aspect.
+The admonitive mood is omitted because it is derived from the realizational \parencite[659–660]{crippen:2019} and the consecutive, conditional, and contingent are omitted because they only occur in embedded clauses \parencites[443–452]{leer:1991}.
+All of the sentences in (\ref{ex:motpos-motasp}) use the motion derivation \fm{NP-dé} (\fm{n}; \fm{yoo=…i-…-k} repetitive) ‘toward NP’ with the bare noun \fm{aan} ‘town, settlement; land’; motion derivations are discussed in section \ref{sec:motderiv}.
+
+\pex\label{ex:motpos-motasp}%
+\a\label{ex:motpos-motasp-pfv}%
+\exrtcmt{perfective}%
+\begingl
+	\gla	\rlap{Aandé} @ {} \rlap{x̱waagoot.} @ {} @ {} @ {} //
+	\glb	aan -dé μw- x̱a- μ- \rt[¹]{gut} -μμL //
+	\glc	town -\xx{all} \xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to \rlap{\xx{ncnj}.\xx{pfv}.I.go} {} {} {} //
+	\glft	‘I went to town.’, ‘I have gone to town.’
+		//
+\endgl
+\a\label{ex:motpos-motasp-prosp}%
+\exrtcmt{prospective}%
+\begingl
+	\gla	\rlap{Aandé} @ {} \rlap{kuḵagóot.} @ {} @ {} @ {} @ {} @ {} //
+	\glb	aan -dé g- u- g̱- x̱a- \rt[¹]{gut} -μμH //
+	\glc	town -\xx{all} \xx{gcnj}- \xx{irr}- \xx{mod}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to \rlap{\xx{ncnj}.\xx{prosp}.I.go} {} {} {} {} {} //
+	\glft	‘I will go to town.’
+		//
+\endgl
+\a\label{ex:motpos-motasp-prog}%
+\exrtcmt{progressive}%
+\begingl
+	\gla	\rlap{Aandé} @ {} yaa @ \rlap{nx̱agút.} @ {} @ {} @ {} //
+	\glb	aan -dé ÿaa= n- x̱a- \rt[¹]{gut} -μH //
+	\glc	town -\xx{all} along= \xx{ncnj}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to along \rlap{\xx{ncnj}.\xx{prog}.I.go} {} {} {} //
+	\glft	‘I am going to town.’
+		//
+\endgl
+\a\label{ex:motpos-motasp-hab}%
+\exrtcmt{habitual}%
+\begingl
+	\gla	\rlap{Aandé} @ {} \rlap{nax̱agútch.} @ {} @ {} @ {} @ {} //
+	\glb	aan -dé na- x̱a- \rt[¹]{gut} -μH -ch //
+	\glc	town -\xx{all} \xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	town -to \rlap{\xx{ncnj}.\xx{hab}.I.go} {} {} {} {} //
+	\glft	‘I have (often, always) regularly gone to town.’
+		//
+\endgl
+\a\label{ex:motpos-motasp-imp}%
+\exrtcmt{imperative}%
+\begingl
+	\gla	\rlap{Aandé} @ {} \rlap{nagú!} @ {} @ {} //
+	\glb	aan -dé na- \rt[¹]{gut} -⊗ //
+	\glc	town -\xx{all} \xx{ncnj}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to \rlap{\xx{ncnj}.\xx{imp}.you·\xx{sg}.go} {} {} //
+	\glft	‘Go to town!’
+		//
+\endgl
+\a\label{ex:motpos-motasp-hort}%
+\exrtcmt{hortative}%
+\begingl
+	\gla	\rlap{Aandé} @ {} \rlap{naḵagoot.} @ {} @ {} @ {} @ {} //
+	\glb	aan -dé na- g̱- x̱a- \rt[¹]{gut} -μμL //
+	\glc	town -\xx{all} \xx{ncnj}- \xx{mod}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to \rlap{\xx{ncnj}.\xx{hort}.I.go} {} {} {} {} //
+	\glft	‘Let me go to town.’, ‘I should go to town.’
+		//
+\endgl
+\a\label{ex:motpos-motasp-pot}%
+\exrtcmt{potential}%
+\begingl
+	\gla	\rlap{Aandé} @ {} \rlap{naḵwaagoot.} @ {} @ {} @ {} @ {} @ {} @ {} //
+	\glb	aan -dé na- g̱- w- x̱a- μ- \rt[¹]{gut} -μμL //
+	\glc	town -\xx{all} \xx{ncnj}- \xx{mod}- \xx{irr}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to \rlap{\xx{ncnj}.\xx{pot}.I.go} {} {} {} {} {} {} //
+	\glft	‘I can go to town.’
+		//
+\endgl
+\a\label{ex:motpos-motasp-rlzn}%
+\exrtcmt{realizational}%
+\begingl
+	\gla	\rlap{Aandé} @ {} \rlap{nax̱aagóot.} @ {} @ {} @ {} @ {} //
+	\glb	aan -dé na- x̱a- μ- \rt[¹]{gut} -μμH //
+	\glc	town -\xx{all} \xx{ncnj}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to \rlap{\xx{ncnj}.\xx{rlzn}.I.go} {} {} {} {} //
+	\glft	‘I have (at long last) gone to town.’
+		//
+\endgl
+\xe
+
+An unmarked imperfective aspect form for the verb root \fm{\rt[¹]{gut}} ‘sg. go’ could plausibly have any one of a \fm{-μH} stem, \fm{-μμH} stem, or \fm{-μμL} stem because unmarked imperfective aspect has unpredictable, lexically specified stem variation and because the phonological shape of this root admits all three possibilities.
+The sentences in (\ref{ex:motpos-motasp-impfv}) show that all three plausible unmarked imperfective forms are ungrammatical.
+
+\pex\label{ex:motpos-motasp-impfv}%
+\a\label{ex:motpos-motasp-impfv-uH}%
+\ljudge{*}%
+\exrtcmt{*imperfective motion}%
+\begingl
+	\gla	\rlap{Aandé} @ {} \rlap{x̱agút.} @ {} @ {} //
+	\glb	aan -dé x̱a- \rt[¹]{gut} -μμL //
+	\glc	town -\xx{all} \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to \rlap{\xx{ncnj}.\xx{impfv}.I.go} {} {} //
+	\glft	intended: ‘I go to town.’, ‘I am going to town.’
+		//
+\endgl
+\a\label{ex:motpos-motasp-impfv-uuH}%
+\ljudge{*}%
+\exrtcmt{*imperfective motion}%
+\begingl
+	\gla	\rlap{Aandé} @ {} \rlap{x̱agóot.} @ {} @ {} //
+	\glb	aan -dé x̱a- \rt[¹]{gut} -μμH //
+	\glc	town -\xx{all} \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to \rlap{\xx{ncnj}.\xx{impfv}.I.go} {} {} //
+	\glft	intended: ‘I go to town.’, ‘I am going to town.’
+		//
+\endgl
+\a\label{ex:motpos-motasp-impfv-uuL}%
+\ljudge{*}%
+\exrtcmt{*imperfective motion}%
+\begingl
+	\gla	\rlap{Aandé} @ {} \rlap{x̱agoot.} @ {} @ {} //
+	\glb	aan -dé x̱a- \rt[¹]{gut} -μμL //
+	\glc	town -\xx{all} \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to \rlap{\xx{ncnj}.\xx{impfv}.I.go} {} {} //
+	\glft	intended: ‘I go to town.’, ‘I am going to town.’
+		//
+\endgl
+\xe
+
+\subsection{Position verbs prohibit all but imperfectives}\label{sec:motpos-posasp}
+
+Position verbs permit an unmarked imperfective aspect form but they prohibit all other aspect/mood/modality inflection.
+The root \fm{\rt[¹]{.a}} ‘sg.\ sit, be positioned’ is a position verb root that cannot be used to form any other kind of verb.
+The form in (\ref{ex:motpos-posasp-impfv}) illustrates this root with the unmarked imperfective aspect and the PP \fm{NP-t} ‘at NP’.
+
+\ex\label{ex:motpos-posasp-impfv}%
+\exrtcmt{imperfective position}%
+\begingl
+	\gla	Nadáakw \rlap{kát} @ {} \rlap{x̱a.áa.} @ {} @ {} //
+	\glb	nadáakw ká -t x̱a- \rt[¹]{.a} -μμH //
+	\glc	table \xx{hsfc} -\xx{pnct} \xx{1sg·s}- \rt[¹]{sit·\xx{sg}} -\xx{var} //
+	\gld	table atop -at \rlap{\xx{impfv}.I.sit·\xx{sg}} {} {} //
+	\glft	‘I am sitting on a table.’, ‘I sit on a table.’
+		//
+\endgl
+\xe
+
+For this CV root there are two logically possible perfective aspect forms depending on whether the verb is assigned the \fm{∅} conjugation class or one of the \fm{n}\,/\fm{g̱}\,/\fm{g} conjugation classes.
+The distinction between these is shown by stem variation as summarized in (\ref{ex:intro-conj-pfvstem}), where \fm{∅} × \rt{CV} ⇒ \fm{-μμH} and \fm{n}\,/\fm{g̱}\,/\fm{g} × \rt{CV} ⇒ \fm{-μμL}.
+Both possibilties are ungrammatical as shown by the sentences in (\ref{ex:motpos-posasp-pfv}).
+
+\pex\label{ex:motpos-posasp-pfv}%
+\a\label{ex:motpos-posasp-pfv-nonz}%
+\ljudge{*}%
+\exrtcmt{*∅ conj.\ perfective}%
+\begingl
+	\gla	Nadáakw \rlap{kát} @ {} \rlap{x̱waa.áa.} @ {} @ {} @ {} @ {} //
+	\glb	nadáakw ká -t
+		μw- x̱a- μ- \rt[¹]{.a} -μμH //
+	\glc	table \xx{hsfc} -\xx{pnct}
+		\xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{sit·\xx{sg}} -\xx{var} //
+	\gld	table atop -at
+		\rlap{\xx{zcnj}.\xx{pfv}.I.sit·\xx{sg}} {} {} {} {} //
+	\glft	intended: ‘I sat on a table.’
+		//
+\endgl
+\a\label{ex:motpos-posasp-pfv-nonz}%
+\ljudge{*}%
+\exrtcmt{*n/g̱/g conj.\ perfective}%
+\begingl
+	\gla	Nadáakw \rlap{kát} @ {} \rlap{x̱waa.aa.} @ {} @ {} @ {} @ {} //
+	\glb	nadáakw ká -t
+		μw- x̱a- μ- \rt[¹]{.a} -μμL //
+	\glc	table \xx{hsfc} -\xx{pnct}
+		\xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{sit·\xx{sg}} -\xx{var} //
+	\gld	table atop -at
+		\rlap{\xx{n/g̱/gcnj}.\xx{pfv}.I.sit·\xx{sg}} {} {} {} {} //
+	\glft	intended: ‘I sat on a table.’
+		//
+\endgl
+\xe
+
+Position verbs are also ungrammatical with other aspect/mood/modality inflections.
+A complete list of ungrammatical forms is not given here for reasons that will be addressed in section \ref{sec:motpos-posconj}.
+
+Although position verbs prohibit any other aspect/mood/modality inflection, they do permit the addition of other tense and mood inflection to the basis form of the unmarked imperfective aspect.
+Past tense marking with past tense \fm{-ín} \~\ \fm{-ún} is shown in (\ref{ex:motpos-posasp-impfv-past}) which is the past tense counterpart of the nonpast imperfective in (\ref{ex:motpos-posasp-impfv}).
+
+\ex\label{ex:motpos-posasp-impfv-past}%
+\exrtcmt{past imperfective position}%
+\begingl
+	\gla	Nadáakw \rlap{kát} @ {} \rlap{x̱a.aayín.} @ {} @ {} @ {} //
+	\glb	nadáakw ká -t x̱a- \rt[¹]{.a} -μμL -yín //
+	\glc	table \xx{hsfc} -\xx{pnct} \xx{1sg·s}- \rt[¹]{sit·\xx{sg}} -\xx{var} -\xx{past} //
+	\gld	table atop -at \rlap{\xx{impfv}.I.sit·\xx{sg}.\xx{past}} {} {} {} //
+	\glft	‘I was sitting on a table.’, ‘I had been sitting on a table.’, ‘I used to sit on a table.’
+		//
+\endgl
+\xe
+
+Position verbs in the unmarked imperfective aspect can also be negated as shown by (\ref{ex:motpos-posasp-impfv-neg}) which is the negative counterpart to (\ref{ex:motpos-posasp-impfv}).
+
+\ex\label{ex:motpos-posasp-impfv-neg}%
+\exrtcmt{negative imperfective position}%
+\begingl
+	\gla	Tléil nadáakw \rlap{kát} @ {} \rlap{x̱wa.aa.} @ {} @ {} @ {} //
+	\glb	tléil nadáakw ká -t w- x̱a- \rt[¹]{.a} -μμL //
+	\glc	\xx{neg} table \xx{hsfc} -\xx{pnct} \xx{irr}- \xx{1sg·s}- \rt[¹]{sit·\xx{sg}} -\xx{var} //
+	\gld	not table atop -at \rlap{\xx{irr}.\xx{impfv}.I.sit·\xx{sg}} {} {} {} //
+	\glft	‘I’m not sitting on a table.’, ‘I don’t sit on a table.’
+		//
+\endgl
+\xe
+
+The past tense and the negative can be combined together with the unmarked imperfective as in (\ref{ex:motpos-posasp-impfv-negpast})
+
+\ex\label{ex:motpos-posasp-impfv-negpast}%
+\exrtcmt{negative past imperfective position}%
+\begingl
+	\gla	Tléil nadáakw \rlap{kát} @ {} \rlap{x̱wa.aayín.} @ {} @ {} @ {} @ {} //
+	\glb	tléil nadáakw ká -t w- x̱a- \rt[¹]{.a} -μμL -yín //
+	\glc	\xx{neg} table \xx{hsfc} -\xx{pnct} \xx{irr}- \xx{1sg·s}- \rt[¹]{sit·\xx{sg}} -\xx{var} -\xx{past} //
+	\gld	not table atop -at \rlap{\xx{irr}.\xx{impfv}.I.sit·\xx{sg}.\xx{past}} {} {} {} {} //
+	\glft	‘I was not sitting on a table.’, ‘I hadn’t been sitting on a table.’, ‘I didn’t sit on a table.’
+		//
+\endgl
+\xe
+
+And finally, the unmarked imperfective aspect can be combined with the prohibitive that is composed of the prohibitive particle \fm{líl} ‘don’t’ and the optative suffix \fm{-ḵ} \~\ \fm{-íḵ}.
+This is shown in (\ref{ex:motpos-posasp-impfv-phib}) with the subject switched to second person singular.
+
+\ex\label{ex:motpos-posasp-impfv-phib}%
+\exrtcmt{negative imperfective position}%
+\begingl
+	\gla	Líl nadáakw \rlap{kát} @ {} \rlap{ee.aayíḵ!} @ {} @ {} @ {} //
+	\glb	líl nadáakw ká -t ee- \rt[¹]{.a} -μμL -yíḵ //
+	\glc	\xx{phib} table \xx{hsfc} -\xx{pnct} \xx{2sg·s}- \rt[¹]{sit·\xx{sg}} -\xx{var} -\xx{opt} //
+	\gld	don’t table atop -at \rlap{\xx{impfv}.I.sit·\xx{sg}.\xx{phib}} {} {} {} //
+	\glft	‘Don’t sit on a table!’, ‘Don’t be sitting on a table!’
+		//
+\endgl
+\xe
+
+\subsection{Motion verbs occur with all conjugation classes}\label{sec:motpos-motconj}
+
+Motion verbs occur with all of the four conjugation classes.
+This is shown in (\ref{ex:motpos-motconj-4conj}) with the root \fm{\rt[¹]{gut}} ‘sg.\ go’ in four imperative forms.
+The same ablative postposition \fm{-dáx̱} ‘from, leaving’ is used in all but the \fm{∅} conjugation where it is not allowed and the locative postposition \fm{-xʼ} is used instead.
+The reason for this difference in postpositions is explained in section \ref{sec:motderiv}: motion derivations assign different postpositions but there is no \fm{∅} conjugation class motion derivation that assigns ablative \fm{-dáx̱}.
+
+\pex\label{ex:motpos-motconj-4conj}%
+\a\label{ex:motpos-motconj-4conj-n}%
+\exrtcmt{n conj.\ imperative}%
+\begingl
+	\gla	\rlap{Aandáx̱} @ {} \rlap{nagú!} @ {} @ {} //
+	\glb	aan -dáx̱ na- \rt[¹]{gut} -⊗ //
+	\glc	town -\xx{abl} \xx{ncnj}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -from \rlap{\xx{ncnj}.\xx{imp}.you·\xx{sg}.go} {} {} //
+	\glft	‘Go away from town!’
+		//
+\endgl
+\a\label{ex:motpos-motconj-4conj-gh}%
+\exrtcmt{g̱ conj.\ imperative}%
+\begingl
+	\gla	\rlap{Aandáx̱} @ {} \rlap{g̱agú!} @ {} @ {} //
+	\glb	aan -dáx̱ g̱a- \rt[¹]{gut} -⊗ //
+	\glc	town -\xx{abl} \xx{g̱cnj}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -from \rlap{\xx{g̱cnj}.\xx{imp}.you·\xx{sg}.go} {} {} //
+	\glft	‘Go down from town!’
+		//
+\endgl
+\a\label{ex:motpos-motconj-4conj-g}%
+\exrtcmt{g conj.\ imperative}%
+\begingl
+	\gla	\rlap{Aandáx̱} @ {} \rlap{gagú!} @ {} @ {} //
+	\glb	aan -dáx̱ ga- \rt[¹]{gut} -⊗ //
+	\glc	town -\xx{abl} \xx{gcnj}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -from \rlap{\xx{g̱cnj}.\xx{imp}.you·\xx{sg}.go} {} {} //
+	\glft	‘Go up from town!’
+		//
+\endgl
+\a\label{ex:motpos-motconj-4conj-z}%
+\exrtcmt{∅ conj.\ imperative}%
+\begingl
+	\gla	\rlap{Aanxʼ} @ {} \rlap{gú!} @ {} @ {}//
+	\glb	aan -xʼ {} \rt[¹]{gut} -⊗ //
+	\glc	town -\xx{loc} \xx{zcnj}\· \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -\rlap{at}\phantom{from} \rlap{\xx{zcnj}.\xx{imp}.you·\xx{sg}.go} {} {} //
+	\glft	‘Go near town!’
+		//
+\endgl
+\xe
+
+The three non-\fm{∅} conjugation classes can be used with motion verbs without an overt postposition.
+The spatial meanings of the conjugation classes \parencite[583–586]{crippen:2019} are especially distinct in this PP-less context: there is no morphosyntactic difference between them aside from conjugation class but there are clear differences in their interpretations since (\ref{ex:motpos-motconj-nopp-gh}) describes motion downward  and (\ref{ex:motpos-motconj-nopp-g}) describes motion upward.
+
+\pex\label{ex:motpos-motconj-nopp}%
+\a\label{ex:motpos-motconj-nopp-n}%
+\exrtcmt{n conj.\ imperative}%
+\begingl
+	\gla	\rlap{Nagú!} @ {} @ {} //
+	\glb	na- \rt[¹]{gut} -⊗ //
+	\glc	\xx{ncnj}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	\rlap{\xx{ncnj}.\xx{imp}.you·\xx{sg}.go} {} {} //
+	\glft	‘Go!’
+		//
+\endgl
+\a\label{ex:motpos-motconj-nopp-gh}%
+\exrtcmt{g̱ conj.\ imperative}%
+\begingl
+	\gla	\rlap{G̱agú!} @ {} @ {} //
+	\glb	g̱a- \rt[¹]{gut} -⊗ //
+	\glc	\xx{g̱cnj}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	\rlap{\xx{g̱cnj}.\xx{imp}.you·\xx{sg}.go} {} {} //
+	\glft	‘Go down!’
+		//
+\endgl
+\a\label{ex:motpos-motconj-nopp-g}%
+\exrtcmt{g conj.\ imperative}%
+\begingl
+	\gla	\rlap{Gagú!} @ {} @ {} //
+	\glb	ga- \rt[¹]{gut} -⊗ //
+	\glc	\xx{gcnj}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	\rlap{\xx{g̱cnj}.\xx{imp}.you·\xx{sg}.go} {} {} //
+	\glft	‘Go up!’
+		//
+\endgl
+\xe
+
+\subsection{Position verbs do not show conjugation classes}\label{sec:motpos-posconj}
+
+As noted earlier, \textcite[71–74, 324–328]{leer:1991} implies without comment that position verbs are not specified for conjugation class.
+He does so by giving every position verb without any indication of conjugation class membership.
+Although this has yet to be shown for every possible combination of aspect/mood/modality inflection and conjugation class, it does seem to be the case.
+For example, imperative forms are the canonical diagnostic for conjugation class, but for position verbs imperatives like those in (\ref{ex:motpos-posconj-imp}) are ungrammatical.%
+\footnote{The prohibitive unmarked imperfective aspect form in (\ref{ex:motpos-posasp-impfv-phib}) allows the speaker to indicate a negative desire for the addressee to be sitting at a location.
+There is no counterpart affirmative desire with this verb since there is no corresponding imperative. But see section \ref{sec:motposroot} for an alternative.}
+
+\pex\label{ex:motpos-posconj-imp}%
+\a\label{ex:motpos-posconj-imp-n}%
+\ljudge{*}%
+\exrtcmt{*n conj.\ imperative}%
+\begingl
+	\gla	\rlap{Át} @ {} \rlap{na.aa!} @ {} @ {} //
+	\glb	á -t na- \rt[¹]{.a} -μμL //
+	\glc	\xx{3n} -\xx{pnct} \xx{ncnj}- \rt[¹]{sit·\xx{sg}} -\xx{var} //
+	\gld	it -at \rlap{\xx{ncnj}.\xx{imp}.you·\xx{sg}.sit·\xx{sg}} {} {} //
+	\glft	intended: ‘Be sitting there!’
+		//
+\endgl
+\a\label{ex:motpos-posconj-imp-gh}%
+\ljudge{*}%
+\exrtcmt{*g̱ conj.\ imperative}%
+\begingl
+	\gla	\rlap{Át} @ {} \rlap{g̱a.aa!} @ {} @ {} //
+	\glb	á -t g̱a- \rt[¹]{.a} -μμL //
+	\glc	\xx{3n} -\xx{pnct} \xx{g̱cnj}- \rt[¹]{sit·\xx{sg}} -\xx{var} //
+	\gld	it -at \rlap{\xx{g̱cnj}.\xx{imp}.you·\xx{sg}.sit·\xx{sg}} {} {} //
+	\glft	intended: ‘Be sitting there!’
+		//
+\endgl
+\a\label{ex:motpos-posconj-imp-g}%
+\ljudge{*}%
+\exrtcmt{*g conj.\ imperative}%
+\begingl
+	\gla	\rlap{Át} @ {} \rlap{ga.aa!} @ {} @ {} //
+	\glb	á -t ga- \rt[¹]{.a} -μμL //
+	\glc	\xx{3n} -\xx{pnct} \xx{gcnj}- \rt[¹]{sit·\xx{sg}} -\xx{var} //
+	\gld	it -at \rlap{\xx{gcnj}.\xx{imp}.you·\xx{sg}.sit·\xx{sg}} {} {} //
+	\glft	intended: ‘Be sitting there!’
+		//
+\endgl
+\a\label{ex:motpos-posconj-imp-z}%
+\ljudge{*}%
+\exrtcmt{*∅ conj.\ imperative}%
+\begingl
+	\gla	\rlap{Át} @ {} \rlap{aa!} @ {} @ {} //
+	\glb	á -t {} \rt[¹]{.a} -μμL //
+	\glc	\xx{3n} -\xx{pnct} \xx{zcnj}\· \rt[¹]{sit·\xx{sg}} -\xx{var} //
+	\gld	it -at \rlap{\xx{zcnj}.\xx{imp}.you·\xx{sg}.sit·\xx{sg}} {} {} //
+	\glft	intended: ‘Be sitting there!’
+		//
+\endgl
+\xe
+
+Recall from section \ref{sec:intro-conj-sum} that there is only one aspect/mood/modality inflection where conjugation class cannot be at least implicitly identified from the form, namely the unmarked non-repetitive imperfective aspect.
+Further, section \ref{sec:motpos-posasp} claimed that position verbs can only occur with the unmarked imperfective aspect, showing that at least perfective aspect is ungrammatical.
+This means that there are no possible aspect/mood/modality forms that could indicate conjugation class membership for a position verb.
+
+There is no comprehensive evidence for the lack of conjugation class in position verbs.
+But if position verbs are unspecified for conjugation class then this could explain why only the unmarked imperfective aspect is ungrammatical.
+Since every aspect/mood/modality inflection except for the unmarked imperfective aspect requires information about conjugation class, if a position verb actually lacks conjugation class then all inflections other than the unmarked imperfective aspect would be impossible to construct.
+
+There could conceivably still be a way to add conjugation class to a positional verb, specifically by using motion derivations in the same way that conjugation classes are assigned to motion verbs (sec.\ \ref{sec:motderiv}).
+This does not seem to be possible because there are no examples of position verbs with any morphosyntactic or semantic signs of having a motion derivation applied to them, including the especially common terminative \fm{yan} \~\ \fm{yax̱} \~\ \fm{yánde} (\fm{∅}; \fm{-μμL} repetitive) ‘ending, stopping, finishing, completing’ derivation.
+But absence of evidence is not evidence of absence so this possibility still needs to be investigated.
+
+\subsection{Motion verbs can have surprising repetitive imperfectives}\label{sec:motpos-motrep}
+
+Motion verbs with the \fm{∅} conjugation class show three different repetitive imperfective forms that are unexpected for \fm{∅} conjugation class verbs.
+The typical repetitive imperfective form for a verb of the \fm{∅} conjugation class has the repetitive suffix \fm{-x̱} as shown previously in section \ref{sec:intro-conj-repimp}.
+But many \fm{∅} conjugation motion verbs have repetitive imperfectives with \fm{-ch} or \fm{-k} or even no suffix at all.
+And although there are occasional cases of unexpected repetitive imperfective forms for other eventuality classes, these are lexically specific cases dependent on particular roots whereas the patterns in motion verbs are systematic and independent of any one root.
+
+The sentences in (\ref{ex:motpos-motrep-inland}) show an unexpected \fm{-ch} repetitive imperfective for a \fm{∅} conjugation class motion verb based on the root \fm{\rt[¹]{gut}} ‘sg.\ go’.
+The forms in (\ref{ex:motpos-motrep-inland-imp}) and (\ref{ex:motpos-motrep-inland-pfv}) confirm that this is verb belongs to the \fm{∅} conjugation class.
+But the repetitive imperfective form has \fm{-ch} in (\ref{ex:motpos-motrep-inland-repch}) and the predicted form with \fm{-x̱} in (\ref{ex:motpos-motrep-inland-repxh}) is ungrammatical.
+
+\pex\label{ex:motpos-motrep-inland}%
+\a\label{ex:motpos-motrep-inland-imp}%
+\exrtcmt{∅ conj.\ imperative}%
+\begingl
+	\gla	Daaḵ @ \rlap{gú!} @ {} @ {} //
+	\glb	dáaḵ= {} \rt[¹]{gut} -⊗ //
+	\glc	inland= \xx{zcnj}\· \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	inland \rlap{\xx{zcnj}.\xx{imp}.you·\xx{sg}.go·\xx{sg}} {} {} //
+	\glft	‘Go inland!’
+		//
+\endgl
+\a\label{ex:motpos-motrep-inland-pfv}%
+\exrtcmt{∅ conj.\ perfective}%
+\begingl
+	\gla	Daaḵ @ \rlap{x̱waagút.} @ {} @ {} @ {} @ {} //
+	\glb	dáaḵ= μw- x̱- μ- \rt[¹]{gut} -μH //
+	\glc	inland= \xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	inland \rlap{\xx{zcnj}.\xx{pfv}.I.go·\xx{sg}} {} {} {} {} //
+	\glft	‘I went inland.’, ‘I have gone inland.’
+		//
+\endgl
+\a\label{ex:motpos-motrep-inland-repch}%
+\exrtcmt{-ch repetitive imperfective}%
+\begingl
+	\gla	Daaḵ @ \rlap{x̱agútch.} @ {} @ {} @ {} //
+	\glb	dáaḵ= x̱a- \rt[¹]{gut} -μH -ch //
+	\glc	inland= \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	inland \rlap{\xx{zcnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} {} //
+	\glft	‘I repeatedly go inland.’
+		//
+\endgl
+\a\label{ex:motpos-motrep-inland-repxh}%
+\ljudge{*}%
+\exrtcmt{*-x̱ repetitive imperfective}%
+\begingl
+	\gla	Daaḵ @ \rlap{x̱agútx̱.} @ {} @ {} @ {} //
+	\glb	dáaḵ= x̱a- \rt[¹]{gut} -μH -x̱ //
+	\glc	inland= \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	inland \rlap{\xx{zcnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} {} //
+	\glft	intended: ‘I repeatedly go inland.’
+		//
+\endgl
+\xe
+
+Switching to a different motion root does not change the pattern:
+the root \fm{\rt[¹]{ḵux̱}} ‘go by boat or other vehicle’ in (\ref{ex:motpos-motrep-inboat}) has the same forms.
+
+\pex\label{ex:motpos-motrep-inboat}%
+\a\label{ex:motpos-motrep-inboat-imp}%
+\exrtcmt{∅ conj.\ imperative}%
+\begingl
+	\gla	Daaḵ @ \rlap{ḵúx̱!} @ {} @ {} //
+	\glb	dáaḵ= {} \rt[¹]{ḵux̱} -μH //
+	\glc	inland= \xx{zcnj}\· \rt[¹]{go·boat} -\xx{var} //
+	\gld	inland \rlap{\xx{zcnj}.\xx{imp}.you·\xx{sg}.go·boat} {} {} //
+	\glft	‘Boat/drive inland!’
+		//
+\endgl
+\a\label{ex:motpos-motrep-inboat-pfv}%
+\exrtcmt{∅ conj.\ perfective}%
+\begingl
+	\gla	Daaḵ @ \rlap{x̱waaḵúx̱.} @ {} @ {} @ {} @ {} //
+	\glb	dáaḵ= μw- x̱- μ- \rt[¹]{ḵux̱} -μH //
+	\glc	inland= \xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·boat} -\xx{var} //
+	\gld	inland \rlap{\xx{zcnj}.\xx{pfv}.I.go·boat} {} {} {} {} //
+	\glft	‘I boated/drove inland.’, ‘I have boated/driven inland.’
+		//
+\endgl
+\a\label{ex:motpos-motrep-inboat-repch}%
+\exrtcmt{-ch repetitive imperfective}%
+\begingl
+	\gla	Daaḵ @ \rlap{x̱aḵúx̱ch.} @ {} @ {} @ {} //
+	\glb	dáaḵ= x̱a- \rt[¹]{ḵux̱} -μH -ch //
+	\glc	inland= \xx{1sg·s}- \rt[¹]{go·boat} -\xx{var} -\xx{rep} //
+	\gld	inland \rlap{\xx{zcnj}.\xx{impfv}.I.go·boat.\xx{rep}} {} {} {} //
+	\glft	‘I repeatedly boat/drive inland.’
+		//
+\endgl
+\a\label{ex:motpos-motrep-inboat-repxh}%
+\ljudge{*}%
+\exrtcmt{*-x̱ repetitive imperfective}%
+\begingl
+	\gla	Daaḵ @ \rlap{x̱aḵúx̱x̱.} @ {} @ {} @ {} //
+	\glb	dáaḵ= x̱a- \rt[¹]{ḵux̱} -μH -x̱ //
+	\glc	inland= \xx{1sg·s}- \rt[¹]{go·boat} -\xx{var} -\xx{rep} //
+	\gld	inland \rlap{\xx{zcnj}.\xx{impfv}.I.go·boat.\xx{rep}} {} {} {} //
+	\glft	intended: ‘I repeatedly boat/drive inland.’
+		//
+\endgl
+\xe
+
+The repetitive imperfective predicted for \fm{g̱} conjugation class verbs is \fm{yei= … -ch} and for \fm{g} conjugation class verbs is \fm{kei= … -ch}, each with the \fm{yei=} ‘down’ and \fm{kei=} ‘up’ preverbs that correspond regularly with these conjugation classes in progressive and prospective aspect forms (sec.\ \ref{sec:intro-conj-repimp}).
+Since the \fm{∅} conjugation class has no special preverb in its progressive and prospective aspect forms, the lack of a special preverb with the repetitive imperfective in (\ref{ex:motpos-motrep-inboat-repch}) is unsurprising.
+
+The \fm{-k} repetitive imperfective can also occur with a \fm{∅} conjugation class motion verb.
+This case is interesting because it also involves the alternating \fm{yoo=} ‘back and forth, to and fro’ preverb that is otherwise closely associated with the \fm{n} conjugation class.
+
+\pex\label{ex:motpos-motrep-alt}%
+\a\label{ex:motpos-motrep-alt-imp}%
+\exrtcmt{∅ conj.\ imperative}%
+\begingl
+	\gla	Yoo @ \rlap{gú!} @ {} @ {} //
+	\glb	yoo= {} \rt[¹]{gut} -⊗ //
+	\glc	\xx{alt}= \xx{zcnj}\· \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	to/fro\· \rlap{\xx{zcnj}.\xx{imp}.you·\xx{sg}.go·\xx{sg}} {} {} //
+	\glft	‘Go back and forth!’, ‘Go to and fro!’
+		//
+\endgl
+\a\label{ex:motpos-motrep-alt-pfv}%
+\exrtcmt{∅ conj.\ perfective}%
+\begingl
+	\gla	Yoo @ \rlap{x̱waagút.} @ {} @ {} @ {} @ {} //
+	\glb	yoo= μw- x̱- μ- \rt[¹]{gut} -μH //
+	\glc	\xx{alt}= \xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	to/fro\· \rlap{\xx{zcnj}.\xx{pfv}.I.go·\xx{sg}} {} {} {} {} //
+	\glft	‘I went back and forth.’, ‘I have gone to and fro.’
+		//
+\endgl
+\a\label{ex:motpos-motrep-alt-repch}%
+\exrtcmt{-k repetitive imperfective}%
+\begingl
+	\gla	Yoo @ \rlap{x̱aagútk.} @ {} @ {} @ {} @ {} //
+	\glb	yoo= x̱a- μ- \rt[¹]{gut} -μH -k //
+	\glc	\xx{alt}= \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	to/fro\· \rlap{\xx{zcnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} {} //
+	\glft	‘I repeatedly go back and forth.’
+		//
+\endgl
+\a\label{ex:motpos-motrep-alt-repxh}%
+\ljudge{*}%
+\exrtcmt{*-x̱ repetitive imperfective}%
+\begingl
+	\gla	Yoo @ \rlap{x̱agútx̱.} @ {} @ {} @ {} //
+	\glb	yoo= x̱a- \rt[¹]{gut} -μH -x̱ //
+	\glc	\xx{alt}= \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	to/fro\· \rlap{\xx{zcnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} {} //
+	\glft	intended: ‘I repeatedly go back and forth.’
+		//
+\endgl
+\xe
+
+Perhaps the most unusual case is the repetitive imperfective form that lacks an overt repetitive suffix, showing only \fm{-μμL} stem variation.
+In this context there is a regular, aspectually conditioned alternation between three postpositions: pertingent \fm{-x̱} ‘at, contacting’ with repetitive imperfective aspect, allative \fm{-dé} ‘toward’ with the progressive and prospective aspects, and punctual \fm{-t} ‘to a point’ with all other aspects.
+
+\pex\label{ex:motpos-motrep-telic}%
+\a\label{ex:motpos-motrep-telic-imp}%
+\exrtcmt{∅ conj.\ imperative}%
+\begingl
+	\gla	\rlap{Át} @ {} \rlap{gú!} @ {} @ {} //
+	\glb	á -t {} \rt[¹]{gut} -⊗ //
+	\glc	\xx{3n} -\xx{pnct} \xx{zcnj}\· \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	there -to \rlap{\xx{zcnj}.\xx{imp}.you·\xx{sg}.go·\xx{sg}} {} {} //
+	\glft	‘Get there!’, ‘Arrive there!’
+		//
+\endgl
+\a\label{ex:motpos-motrep-telic-pfv}%
+\exrtcmt{∅ conj.\ perfective}%
+\begingl
+	\gla	\rlap{Át} @ {} \rlap{x̱waagút.} @ {} @ {} @ {} @ {} //
+	\glb	á -t μw- x̱- μ- \rt[¹]{gut} -μH //
+	\glc	\xx{3n} -\xx{pnct} \xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	there -to \rlap{\xx{zcnj}.\xx{pfv}.I.go·\xx{sg}} {} {} {} {} //
+	\glft	‘I got there.’, ‘I arrived there.’
+		//
+\endgl
+\a\label{ex:motpos-motrep-telic-repch}%
+\exrtcmt{-μμL repetitive imperfective}%
+\begingl
+	\gla	\rlap{Áx̱} @ {} \rlap{x̱agoot.} @ {} @ {} //
+	\glb	á -x̱ x̱a- \rt[¹]{gut} -μμL //
+	\glc	\xx{3n} -\xx{pert} \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	there -at \rlap{\xx{zcnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} //
+	\glft	‘I repeatedly get there.’, ‘I repeatedly arrive there.’
+		//
+\endgl
+\a\label{ex:motpos-motrep-telic-repxh}%
+\ljudge{*}%
+\exrtcmt{*-x̱ repetitive imperfective}%
+\begingl
+	\gla	\rlap{Áx̱} @ {} \rlap{x̱agútx̱.} @ {} @ {} @ {} //
+	\glb	á -x̱ x̱a- \rt[¹]{gut} -μH -x̱ //
+	\glc	\xx{3n} -\xx{pert} \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	there -at \rlap{\xx{zcnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} {} //
+	\glft	intended: ‘I repeatedly get there.’
+		//
+\endgl
+\xe
+
+There are cases where the ‘expected’ \fm{-x̱} repetitive imperfective does occur for \fm{∅} conjugation class motion verbs.
+One relatively common example is with the inceptive preverb \fm{g̱unayéi} / \fm{g̱unéi} ‘beginning, starting, initiating’.
+
+\pex\label{ex:motpos-motrep-incep}%
+\a\label{ex:motpos-motrep-incep-imp}%
+\exrtcmt{∅ conj.\ imperative}%
+\begingl
+	\gla	G̱unayéi @ \rlap{gú!} @ {} @ {} //
+	\glb	g̱unayéi= {} \rt[¹]{gut} -⊗ //
+	\glc	\xx{incep}= \xx{zcnj}\· \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	begin\• \rlap{\xx{zcnj}.\xx{imp}.you·\xx{sg}.go·\xx{sg}} {} {} //
+	\glft	‘Start going!’, ‘Get going!’
+		//
+\endgl
+\a\label{ex:motpos-motrep-incep-pfv}%
+\exrtcmt{∅ conj.\ perfective}%
+\begingl
+	\gla	G̱unayéi @ \rlap{x̱waagút.} @ {} @ {} @ {} @ {} //
+	\glb	g̱unayéi= μw- x̱- μ- \rt[¹]{gut} -μH //
+	\glc	\xx{incep}= \xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	begin\• \rlap{\xx{zcnj}.\xx{pfv}.I.go·\xx{sg}} {} {} {} {} //
+	\glft	‘I began going.’, ‘I have started to go.’
+		//
+\endgl
+\a\label{ex:motpos-motrep-incep-repxh}%
+\exrtcmt{-x̱ repetitive imperfective}%
+\begingl
+	\gla	G̱unayéi @ \rlap{x̱agútx̱.} @ {} @ {} @ {} //
+	\glb	g̱unayéi= x̱a- \rt[¹]{gut} -μH -x̱ //
+	\glc	\xx{incep}= \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	begin\• \rlap{\xx{zcnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} {} //
+	\glft	‘I repeatedly start going.’
+		//
+\endgl
+\xe
+
+In sum, motion verbs can have a variety of different repetitive imperfective forms that are not predicted by their conjugation class.
+This is in contrast with the activity, state, and achievement verbs that usually have a repetitive imperfective form predicted by conjugation class membership.
+For the motion verbs, the repetitive imperfective form must be specified separately from the lexical information of the verb root.
+The locus of this specification is the motion derivation as detailed in the next section.
+
+\section{Motion derivation}\label{sec:motderiv}
+
+The same motion verb root can occur with different conjugation classes and with different repetitive imperfective forms as shown in sections \ref{sec:motpos-motconj} and \ref{sec:motpos-motrep}.
+The distribution of conjugation classes and repetitive imperfective forms might seem bewilderingly random, but they reflect a regular system of derivations that are applied to motion verbs.
+These derivations are called ‘motion derivations’ and the system formed by them and their interactions is called the ‘motion derivation system’.
+
+A \textbf{motion derivation} is a combination of morphological, syntactic, and semantic properties that, when applied to a motion verb base, gives rise to a complete inflectional paradigm for the motion verb.
+Every motion verb must have a motion derivation applied to it to be inflected for aspect/mood/modality.
+The minimal motion derivation specifies only conjugation class and a repetitive imperfective form.
+Motion derivations can also include a PP, a preverb (possibly itself a PP), one or more qualifiers (incorporated nouns and the like), an irrealis prefix, and in two cases the voice prefix \fm{d-}.
+
+The \textbf{path argument} (or path component) is the PP and/or preverb in the motion derivation that denotes the path or location in space where the motion occurs.
+Any prefixes specified by the motion derivation are usually considered to be part of the path argument although this may be semantically and syntactically debatable.
+There are three motion derivations without a path argument, one each for the \fm{n}, \fm{g̱}, and \fm{g} conjugation classes; there is no \fm{∅} conjugation motion derivation without a path argument.
+
+The data in (\ref{ex:motderiv-intro-ming}) illustrates a partial inflectional paradigm of verb forms based on the motion root \fm{\rt[¹]{gut}} ‘sg.\ go’ and the motion derivation {} — (\fm{g}; \fm{kei=…-ch} repetitive) ‘upward’ which lacks an overt path argument.%
+\footnote{There could conceivably be a covert path argument in cases where there is no overt path argument but this theoretical possibility has not been investigated.}
+Since most motion derivations include a path argument, the lack of one is explicitly indicated by an em-dash ‘—’.
+
+\pex\label{ex:motderiv-intro-ming}%
+\a\label{ex:motderiv-intro-ming-deriv}%
+\exrtcmt{motion derivation}%
+	— (\fm{g}; \fm{kei=…-ch} repetitive) ‘upward’
+\a\label{ex:motderiv-intro-ming-imp}%
+\exrtcmt{imperative}%
+\begingl
+	\gla	\rlap{Gagú!} @ {} @ {} //
+	\glb	ga- \rt[¹]{gut} -⊗ //
+	\glc	\xx{gcnj}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	\rlap{\xx{gcnj}.\xx{imp}.you·\xx{sg}.go·\xx{sg}} {} {} //
+	\glft	‘Go upward!’
+		//
+\endgl
+\a\label{ex:motderiv-intro-ming-repimpfv}%
+\exrtcmt{repetitive imperfective}%
+\begingl
+	\gla	Kei @ \rlap{x̱agútch.} @ {} @ {} @ {} //
+	\glb	kei= x̱a- \rt[¹]{gut} -μH -ch //
+	\glc	up= \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	up \rlap{\xx{gcnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} {} //
+	\glft	‘I repeatedly go upward.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-ming-prog}%
+\exrtcmt{progressive}%
+\begingl
+	\gla	Kei @ \rlap{nx̱agút.} @ {} @ {} @ {} //
+	\glb	kei= n- x̱a- \rt[¹]{gut} -μH //
+	\glc	up= \xx{ncnj}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	up \rlap{\xx{gcnj}.\xx{prog}.I.go·\xx{sg}} {} {} {} //
+	\glft	‘I am going upward.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-ming-prosp}%
+\exrtcmt{progressive}%
+\begingl
+	\gla	Kei @ \rlap{kḵwagóot.} @ {} @ {} @ {} @ {} @ {} //
+	\glb	kei= g- w- g̱- x̱a- \rt[¹]{gut} -μμH //
+	\glc	up= \xx{gcnj}- \xx{irr}- \xx{mod}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	up \rlap{\xx{gcnj}.\xx{prosp}.I.go·\xx{sg}} {} {} {} {} {} //
+	\glft	‘I will go upward.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-ming-hab}%
+\exrtcmt{habitual}%
+\begingl
+	\gla	\rlap{Gax̱agútch.} @ {} @ {} @ {} @ {} //
+	\glb	ga- x̱a- \rt[¹]{gut} -μH -ch //
+	\glc	\xx{gcnj}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	\rlap{\xx{gcnj}.\xx{hab}.I.go·\xx{sg}} {} {} {} {} //
+	\glft	‘I always/often have gone upward.’
+		//
+\endgl
+\xe
+
+The data in (\ref{ex:motderiv-intro-zoutway}) illustrates a relatively complex motion derivation: \fm{NP jikaadáx̱} + \fm{ÿa-uˑ-} (\fm{∅}; \fm{-ch} repetitive) ‘out of the way of NP’.
+This includes a PP \fm{NP jikaadáx̱} ‘off of the hand of NP’, the qualifier \fm{ÿa-} ‘face’, and irrealis \fm{uˑ-} and assigns the \fm{-ch} repetitive imperfective form.
+For unclear reasons all motion derivations with \fm{ÿa-uˑ-} (associated with motion off to the side) switch to using the preverb \fm{ÿaa=} ‘along’ instead of \fm{ÿa-uˑ-} in the repetitive imperfective as in (\ref{ex:motderiv-intro-zoutway-repimpfv}) although they occur together in the progressive as in (\ref{ex:motderiv-intro-zoutway-prog}).
+
+\pex\label{ex:motderiv-intro-zoutway}%
+\a\label{ex:motderiv-intro-zoutway-deriv}%
+\exrtcmt{motion derivation}%
+	\fm{NP jikaadáx̱} + \fm{ÿa-uˑ-} (\fm{∅}; \fm{-ch} repetitive) ‘out of the way of NP’
+\a\label{ex:motderiv-intro-zoutway-imp}%
+\exrtcmt{imperative}%
+\begingl
+	\gla	Du \rlap{jikaadáx̱} @ {} @ {} 
+		\rlap{woogú!} @ {} @ {} @ {} @ {} //
+	\glb	du ji- kaa -dáx̱
+		ÿa- u- {} \rt[¹]{gut} -⊗ //
+	\glc	\xx{3h·pss} hand- \xx{hsfc} -\xx{abl}
+		face- \xx{irr}- \xx{zcnj}\· \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	his hand- atop -from
+		\rlap{off.\xx{zcnj}.\xx{imp}.you·\xx{sg}.go·\xx{sg}} {} {} {} {} //
+	\glft	‘Get out of her/his way!’
+		//
+\endgl
+\a\label{ex:motderiv-intro-zoutway-repimpfv}%
+\exrtcmt{repetitive imperfective}%
+\begingl
+	\gla	Du \rlap{jikaadáx̱} @ {} @ {} 
+		yaa @ \rlap{x̱agútch.} @ {} @ {} @ {} //
+	\glb	du ji- kaa -dáx̱
+		ÿaa= x̱a- \rt[¹]{gut} -μH -ch //
+	\glc	\xx{3h·pss} hand- \xx{hsfc} -\xx{abl}
+		along= \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	his hand- atop -from
+		\rlap{off.\xx{zcnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} {} //
+	\glft	‘I repeatedly get out of her/his way.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-zoutway-prog}%
+\exrtcmt{progressive}%
+\begingl
+	\gla	Du \rlap{jikaadáx̱} @ {} @ {} 
+		yaa @ \rlap{wunx̱agút.} @ {} @ {} @ {} @ {} @ {} //
+	\glb	du ji- kaa -dáx̱
+		ÿaa= ÿa- uˑ- n- x̱a- \rt[¹]{gut} -μH //
+	\glc	\xx{3h·pss} hand- \xx{hsfc} -\xx{abl}
+		along= face- \xx{irr}- \xx{ncnj}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	his hand- atop -from
+		along \rlap{off.\xx{zcnj}.\xx{prog}.I.go·\xx{sg}} {} {} {} {} {} //
+	\glft	‘I am getting out of her/his way.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-zoutway-prosp}%
+\exrtcmt{prospective}%
+\begingl
+	\gla	Du \rlap{jikaadáx̱} @ {} @ {} 
+		\rlap{yakḵwagóot.} @ {} @ {} @ {} @ {} @ {} @ {} //
+	\glb	du ji- kaa -dáx̱
+		ÿa- g- w- g̱- x̱a- \rt[¹]{gut} -μμH //
+	\glc	\xx{3h·pss} hand- \xx{hsfc} -\xx{abl}
+		face- \xx{gcnj}- \xx{irr}- \xx{mod}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	his hand- atop -from
+		\rlap{off.\xx{zcnj}.\xx{prosp}.I.go·\xx{sg}} {} {} {} {} {} {} //
+	\glft	‘I will get out of her/his way.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-zoutway-pfv}%
+\exrtcmt{perfective}%
+\begingl
+	\gla	Du \rlap{jikaadáx̱} @ {} @ {} 
+		\rlap{yax̱waagút.} @ {} @ {} @ {} @ {} @ {} //
+	\glb	du ji- kaa -dáx̱
+		ÿa- μw- x̱a- μ- \rt[¹]{gut} -μH //
+	\glc	\xx{3h·pss} hand- \xx{hsfc} -\xx{abl}
+		face- \xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	his hand- atop -from
+		\rlap{off.\xx{zcnj}.\xx{pfv}.I.go·\xx{sg}} {} {} {} {} {} //
+	\glft	‘I repeatedly get out of her/his way.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-zoutway-hab}%
+\exrtcmt{habitual}%
+\begingl
+	\gla	Du \rlap{jikaadáx̱} @ {} @ {} 
+		\rlap{yoox̱wagútch.} @ {} @ {} @ {} @ {} @ {} //
+	\glb	du ji- kaa -dáx̱
+		ÿa- μw- x̱a- \rt[¹]{gut} -μH -ch //
+	\glc	\xx{3h·pss} hand- \xx{hsfc} -\xx{abl}
+		face- \xx{pfv}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	his hand- atop -from
+		\rlap{off.\xx{zcnj}.\xx{hab}.I.go·\xx{sg}} {} {} {} {} {} //
+	\glft	‘I repeatedly get out of her/his way.’
+		//
+\endgl
+\xe
+
+The path argument of a motion derivation may be sensitive to aspect/mood/modality inflection.
+This is specifically the case for the motion derivation \fm{NP-\{t,x̱,dé\}} (\fm{∅}; \fm{-μμL} repetitive) ‘arriving at NP’ and all the motion derivations based on it.
+The repetitive imperfective in (\ref{ex:motderiv-intro-zarrive-reimpmpfv}) has pertingent \fm{-x̱} ‘at, contacting’ and the progressive in (\ref{ex:motderiv-intro-zarrive-prog}) and prospective in (\ref{ex:motderiv-intro-zarrive-prosp}) have allative \fm{-dé} ‘toward’ where all other forms have punctual \fm{-t} ‘at a point’.
+
+\pex\label{ex:motderiv-intro-zarrive}%
+\a\label{ex:motderiv-intro-zarrive-deriv}%
+\exrtcmt{motion derivation}%
+	\fm{NP-\{t,x̱,dé\}} (\fm{∅}; \fm{-μμL} repetitive) ‘arriving at NP’
+\a\label{ex:motderiv-intro-zarrive-imp}%
+\exrtcmt{imperative}%
+\begingl
+	\gla	\rlap{Át} @ {} \rlap{gú!} @ {} @ {} //
+	\glb	á -t {} \rt[¹]{gut} -⊗ //
+	\glc	\xx{3n} -\xx{pnct} \xx{zcnj}\· \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	there -to \rlap{\xx{zcnj}.\xx{imp}.you·\xx{sg}.go·\xx{sg}} {} {} //
+	\glft	‘Get there!’, ‘Arrive there!’
+		//
+\endgl
+\a\label{ex:motderiv-intro-zarrive-reimpmpfv}%
+\exrtcmt{repetitive imperfective}%
+\begingl
+	\gla	\rlap{Áx̱} @ {} \rlap{x̱agoot.} @ {} @ {} //
+	\glb	á -x̱ x̱a- \rt[¹]{gut} -μμL //
+	\glc	\xx{3n} -\xx{pert} \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	there -at \rlap{\xx{zcnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} //
+	\glft	‘I repeatedly get there.’, ‘I repeatedly arrive there.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-zarrive-prog}%
+\exrtcmt{progressive}%
+\begingl
+	\gla	\rlap{Aadé} @ {} yaa @ \rlap{nx̱agút.} @ {} @ {} @ {} //
+	\glb	aa -dé ÿaa= n- x̱a- \rt[¹]{gut} -μH //
+	\glc	\xx{3n} -\xx{all} along= \xx{ncnj}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	there -to along \rlap{\xx{zcnj}.\xx{prog}.I.go·\xx{sg}.\xx{rep}} {} {} {} //
+	\glft	‘I am getting there.’, ‘I am in the process of arriving there.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-zarrive-prosp}%
+\exrtcmt{prospective}%
+\begingl
+	\gla	\rlap{Aadé} @ {} \rlap{kḵwagóot.} @ {} @ {} @ {} @ {} @ {} //
+	\glb	aa -dé g- w- g̱- x̱a- \rt[¹]{gut} -μμH //
+	\glc	\xx{3n} -\xx{all} \xx{gcnj}- \xx{irr}- \xx{mod}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	there -to \rlap{\xx{zcnj}.\xx{prosp}.I.go·\xx{sg}.\xx{rep}} {} {} {} {} {} //
+	\glft	‘I will get there.’, ‘I will arrive there.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-zarrive-pfv}%
+\exrtcmt{perfective}%
+\begingl
+	\gla	\rlap{Át} @ {} \rlap{x̱waagút.} @ {} @ {} @ {} @ {} //
+	\glb	á -t μw- x̱- μ- \rt[¹]{gut} -μH //
+	\glc	\xx{3n} -\xx{pnct} \xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	there -to \rlap{\xx{zcnj}.\xx{pfv}.I.go·\xx{sg}} {} {} {} {} //
+	\glft	‘I got there.’, ‘I arrived there.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-zarrive-hab}%
+\exrtcmt{habitual}%
+\begingl
+	\gla	\rlap{Át} @ {} \rlap{x̱wagútch.} @ {} @ {} @ {} //
+	\glb	á -t μw- x̱- \rt[¹]{gut} -μH //
+	\glc	\xx{3n} -\xx{pnct} \xx{pfv}- \xx{1sg·s}-  \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	there -to \rlap{\xx{zcnj}.\xx{pfv}.I.go·\xx{sg}} {} {} {} //
+	\glft	‘I repeatedly get there.’, ‘I have always arrived there.’
+		//
+\endgl
+\xe
+
+The progressive in (\ref{ex:motderiv-intro-zarrive-prog}) and the prospective in (\ref{ex:motderiv-intro-zarrive-prosp}) with allative \fm{-dé} are both homophonous with equivalent forms based on the \fm{n} conjugation motion derivation \fm{NP-dé} (\fm{n}; \fm{yoo=…i-…-k} repetitive) ‘toward NP’.
+Unlike \fm{NP-\{t,x̱,dé\}} (\fm{∅}; \fm{-μμL} repetitive) ‘arriving at NP’, this \fm{n} conjugation motion derivation has the same postposition in all aspect/mood/modality contexts.
+It is plausible that the overlap between the two motion derivations is a kind of semantically motivated suppletion because forms with \fm{-t} have a telic interpretation where forms with \fm{-dé} do not.
+This requires that somehow the progressive and prospective aspects must be atelic and thus incompatible with \fm{-t}.
+But this explanation would not account for the use of pertingent \fm{-x̱} for the repetitive imperfective, nor for any atelic contexts with \fm{-t} such as its use in the \fm{n} conjugation class motion derivation \fm{NP-t} (\fm{n}; \fm{yoo=…i-…-k} repetitive) ‘circling, perambulating NP’.
+
+The path argument is described as an argument because it shows argument-like properties.
+As shown above, the path argument is sensitive to the aspect/mood/modality of the verb and this is arguably due to it arising as an argument under the scope of the aspectual material.
+In addition, the PP of a path argument generally resists dislocation to the left or right peripheries of the sentence.\footnote{There are a few cases of right dislocated path argument PPs in narratives, but consultants reject them in elicitation.
+Presumably there are unidentified discourse conditions which license the dislocation.}
+This is distinctly unlike adjunct PPs which often occur in the left or right peripheries.
+Using the motion derivation in (\ref{ex:motderiv-intro-zhither-deriv}), the data in (\ref{ex:motderiv-intro-zhither-right}) and (\ref{ex:motderiv-intro-zhither-left}) illustrate this for right and left dislocation of the path argument PP \fm{haandé} ‘to here, hither’.\footnote{The cislocative \fm{haa} irregularly has an excrescent \fm{n} with \fm{-dé}.}
+
+\ex\label{ex:motderiv-intro-zhither-deriv}%
+\exrtcmt{motion derivation}%
+	\fm{haa-t} \~\ \fm{haa-x̱} \~\ \fm{haan-dé} (\fm{∅}; \fm{-μμL} repetitive) ‘here, hither’
+\xe
+
+\pex\label{ex:motderiv-intro-zhither-right}%
+\a\label{ex:motderiv-intro-zhither-right-insitu}%
+\exrtcmt{in situ path argument}%
+\begingl
+	\gla	{} \rlap{Haandé} @ {} {}
+		\rlap{kg̱wagóot.} @ {} @ {} @ {} @ {} //
+	\glb	{} haaⁿ -dé {}
+		g- w- g̱- \rt[¹]{gut} -μμH //
+	\glc	{}[\pr{PP} \xx{cis} -\xx{all} {}]
+		\xx{gcnj}- \xx{irr}- \xx{mod}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	{} here -to {}
+		\rlap{\xx{zcnj}.\xx{prosp}.go·\xx{sg}} {} {} {} {} //
+	\glft	‘She/he/it will come here.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-zhither-right-disloc}%
+\ljudge{*}%
+\exrtcmt{*right dislocated path argument}%
+\begingl
+	\gla	\rlap{Gug̱agóot} @ {} @ {} @ {} @ {}
+		{} \rlap{haandé.} @ {} {} //
+	\glb	g- u- g̱- \rt[¹]{gut} -μμH
+		{} haaⁿ -dé {} //
+	\glc	\xx{gcnj}- \xx{irr}- \xx{mod}- \rt[¹]{go·\xx{sg}} -\xx{var}
+		{}[\pr{PP} \xx{cis} -\xx{all} {}] //
+	\gld	\rlap{\xx{zcnj}.\xx{prosp}.go·\xx{sg}} {} {} {} {}
+		{} here -to {} //
+	\glft	intended: ‘She/he/it will come here.’
+		//
+\endgl
+\xe
+
+\pex\label{ex:motderiv-intro-zhither-left}%
+\a\label{ex:motderiv-intro-zhither-left-insitu}%
+\exrtcmt{in situ path argument}%
+\begingl
+	\gla	Kaldaag̱éináx̱
+		{} \rlap{haandé} @ {} {}
+		\rlap{kg̱wagóot.} @ {} @ {} @ {} @ {} //
+	\glb	kaldaag̱éináx̱
+		{} haaⁿ -dé {}
+		g- w- g̱- \rt[¹]{gut} -μμH //
+	\glc	slowly
+		{}[\pr{PP} \xx{cis} -\xx{all} {}]
+		\xx{gcnj}- \xx{irr}- \xx{mod}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	slowly
+		{} here -to {}
+		\rlap{\xx{zcnj}.\xx{prosp}.go·\xx{sg}} {} {} {} {} //
+	\glft	‘She/he/it will come here slowly.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-zhither-left-disloc}%
+\ljudge{*}%
+\exrtcmt{*left dislocated path argument}%
+\begingl
+	\gla	{} \rlap{Haandé} @ {} {}
+		kaldaag̱éináx̱
+		\rlap{gug̱agóot.} @ {} @ {} @ {} @ {} //
+	\glb	{} haaⁿ -dé {}
+		kaldaag̱éináx̱
+		g- u- g̱- \rt[¹]{gut} -μμH //
+	\glc	{}[\pr{PP} \xx{cis} -\xx{all} {}]
+		slowly
+		\xx{gcnj}- \xx{irr}- \xx{mod}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	{} here -to {}
+		slowly
+		\rlap{\xx{zcnj}.\xx{prosp}.go·\xx{sg}} {} {} {} {} //
+	\glft	intended: ‘She/he/it will come here slowly.’
+		//
+\endgl
+\xe
+
+The ungrammatical forms in (\ref{ex:motderiv-intro-zhither-right-disloc}) and (\ref{ex:motderiv-intro-zhither-left-disloc}) contrast with the grammatical forms in (\ref{ex:motderiv-intro-zhither-adjunct}) which include \fm{haandé} as an adjunct PP.
+In (\ref{ex:motderiv-intro-zhither-adjunct-right}) the PP \fm{haandé} is adjoined to the right periphery and in (\ref{ex:motderiv-intro-zhither-adjunct-left}) the PP is adjoined to the left periphery.
+Further confirming adjunct status of \fm{haandé} in (\ref{ex:motderiv-intro-zhither-adjunct}), the postposition \fm{-dé} is also insensitive to the aspect/mood/modality of the verb.
+The imperative should require \fm{-t} instead of \fm{-dé} for this derivation just like how \fm{ax̱ jee-t} ‘to my possession’ uses \fm{-t} rather than \fm{-dé} in (\ref{ex:motderiv-intro-zhither-adjunct}).
+So although \fm{haandé} can be used as an adjunct PP, when it is used as a path argument PP it is subject to additional restrictions that are not applied to adjuncts.
+
+\pex\label{ex:motderiv-intro-zhither-adjunct}%
+\a\label{ex:motderiv-intro-zhither-adjunct-right}%
+\exrtcmt{right adjn.}%
+\begingl
+	\gla	Kaldaag̱éináx̱
+		{} ax̱ \rlap{jeet} @ {} {}
+		\rlap{tí,} @ {} @ {}
+		{} \rlap{haandé.} @ {} {} //
+	\glb	Kaldaag̱éináx̱
+		{} ax̱ jee -t {}
+		{} \rt[²]{ti} -μH
+		{} haaⁿ -dé {} //
+	\glc	slowly
+		{}[\pr{PP} \xx{1sg·poss} poss’n -\xx{pnct} {}]
+		\xx{zcnj}\· \rt[²]{handle} -\xx{var}
+		{}[\pr{PP} \xx{cis} -\xx{all} {}] //
+	\gld	slowly
+		{} my poss’n to {}
+		\rlap{\xx{zcnj}.\xx{imp}.handle} {} {}
+		{} here -to {} //
+	\glft	‘Give it to me slowly, here.’
+		//
+\endgl
+\a\label{ex:motderiv-intro-zhither-adjunct-left}%
+\exrtcmt{left adjunction}%
+\begingl
+	\gla	{} \rlap{Haandé,} @ {} {}
+		kaldaag̱éináx̱
+		{} ax̱ \rlap{jeet} @ {} {}
+		\rlap{tí.} @ {} @ {} //
+	\glb	{} haaⁿ -dé {}
+		kaldaag̱éináx̱
+		{} ax̱ jee -t {}
+		{} \rt[²]{ti} -μH //
+	\glc	{}[\pr{PP} \xx{cis} -\xx{all} {}]
+		slowly
+		{}[\pr{PP} \xx{1sg·poss} poss’n -\xx{pnct} {}]
+		\xx{zcnj}\· \rt[²]{handle} -\xx{var} //
+	\gld	{} here -to {}
+		slowly
+		{} my poss’n to {}
+		\rlap{\xx{zcnj}.\xx{imp}.handle} {} {} //
+	\glft	‘Here, give it to me slowly.’
+		//
+\endgl
+\xe
+
+There are somewhat over 70 distinct motion derivations that have been documented in the existing grammatical descriptions.
+50 or so of the known motion derivations assign \fm{∅} conjugation class.
+For \fm{n} conjugation class there are about 11, for \fm{g̱} conjugation class there are 9, and for \fm{g} conjugation class there are 4.
+There is considerable compositionality in the system that has yet to be fully elucidated so it is plausible that speakers can create new motion derivations at least from existing parts.
+This also implies that many of the documented motion derivations could be better analyzed as compositions of simpler materials.
+For example, the derivation \fm{NP-xʼ} + \fm{ÿan=} \~\ \fm{ÿax̱=} \~\ \fm{ÿánde=} (\fm{∅}; \fm{-μμL} repetitive) ‘coming to rest at NP’ can be straightforwardly decomposed into a PP \fm{NP-xʼ} ‘at NP’ and a more basic motion derivation \fm{ÿan=} \~\ \fm{ÿax̱=} \~\ \fm{ÿánde=} (\fm{∅}; \fm{-μμL} repetitive) ‘ashore, ending, finishing’ and therefore ‘coming to rest at NP’ = ‘ashore at NP; ending, finishing at NP’.
+The number of motion derivations is therefore somewhat exaggerated by underanalysis.
+
+Speakers are generally familiar with and regularly use the vast majority of the documented motion derivations if not every single one of them.
+A few motion derivations are usually encountered only with one or two specific verbs, but the system seems to be productive enough that these limited cases can be extended to other motion verbs without much effort.
+The primary limiting factors to generalization of any motion derivation beyond its most typical verbs are probably exposure and semantic felicity in context.
+
+\subsection{Grouping of motion derivations}\label{sec:motderiv-grouping}
+
+The motion derivations can be organized according to three different properties: conjugation class, repetitive imperfective form, and path argument.
+Conjugation class is generally taken as the primary distinguishing feature with subgroups under each conjugation class according to the other properties.
+Each of the three \fm{n}, \fm{g̱}, and \fm{g} conjugation classes shows a spatial orientation for motion, but the \fm{∅} conjugation class does not (contra \cite{leer:1991}).
+The \fm{n}, \fm{g̱}, and \fm{g} classes of motion derivation have the same repetitive imperfective forms expected for other verbs in the same conjugation class.
+In contrast, the \fm{∅} conjugation motion derivations have a few different repetitive imperfectives which serve to subdivide them.
+Beyond this, further subdivisions can be made in each class according to shared parts of the path argument as well as shared patterns of meaning.
+
+\subsubsection{Motion derivations with \textit{g} conjugation}\label{sec:motderiv-grouping-g}
+
+The \fm{g} conjugation class is the smallest group of motion derivations with only 4 documented;
+they are listed in (\ref{ex:motderiv-grouping-g-list}).
+The motion derivation without a path argument denotes motion upward, fitting with the spatial orientation for \fm{g} conjugation as used in extensional state imperfectives and with the association between \fm{g} conjugation and the \fm{kei=} ‘up’ preverb.
+The motion derivation with \fm{NP-dáx̱} ‘from NP’ also shows a semantic connection to upward movement; it is compositionally derived from the ablative \fm{-dáx̱} ‘from, departing’ meaning and the \fm{g} conjugation class meaning
+The spatial orientation for the motion derivation with \fm{ḵút=} / \fm{ḵut=} ‘lost’ is unclear.
+
+\ex\label{ex:motderiv-grouping-g-list}%
+\labels%
+\begin{tabular}[t]{llcll}
+	& Path argument	& Conj.	& Repetitive	& Translation\\
+\midrule
+\tl	& —		& g	& kei=…-ch	& ‘upward’\\
+\tl	& NP-dáx̱	& g	& kei=…-ch	& ‘up from NP; starting from NP’\\
+\tl	& NP ít-dáx̱ ÿaa=	& g	& kei=…-ch	& ‘following after NP’\\
+\tl	& ḵút= / ḵut=	& g	& kei=…-ch	& ‘going astray, getting lost’\\
+\end{tabular}
+\xe
+
+\subsubsection{Motion derivations with \textit{g̱} conjugation}\label{sec:motderiv-grouping-gh}
+
+The \fm{g̱} conjugation class of motion derivations is the next smallest with 9 documented.
+They all have the same repetitive imperfective form: \fm{yei= … -ch} with the \fm{yei=} ‘down’ preverb and the \fm{-ch} repetitive suffix.
+They can be subdivided by characteristics of their path arguments.
+The simplest ones listed in (\ref{ex:motderiv-grouping-gh-list-basic}) are the derivation without a path argument and the derivation with the preverb \fm{ÿaa=} ‘along’.
+Both of these denote motion downward, fitting with the general spatial orientation of the \fm{g̱} conjugation class.
+
+\ex\label{ex:motderiv-grouping-gh-list-basic}%
+\labels%
+\begin{tabular}[t]{llcll}
+	& Path argument	& Conj.	& Repetitive	& Translation\\
+\midrule
+\tl	& —		& g̱	& yei=…-ch	& ‘downward, falling’\\
+\tl	& ÿaa=		& g̱	& yei=…-ch	& ‘down along’\\
+\end{tabular}
+\xe
+
+The set of \fm{g̱} conjugation class motion derivations in (\ref{ex:motderiv-grouping-gh-list-xh}) are characterized by the presence of the pertingent postposition \fm{-x̱} ‘at, contacting’ in their path arguments.
+The basis case is the motion derivation with \fm{NP-x̱} which can be derived by composition of this PP with the \fm{g̱} conjugation class meaning of downward spatial orientation.
+The derivation with \fm{héen-x̱} (with \fm{héen} ‘water, river’) is somewhat idiomatic in that it is nonreferential and so does not describe a specific river or other body of water.
+The derivation with \fm{ká-x̱} + \fm{sha-} is unusual in that it lacks a normally required possessor for the inalienable noun \fm{ká} ‘horizontal surface’; the \fm{sha-} ‘head’ is an incorporated noun.
+The derivation with \fm{yaax̱=} is historically derived from \fm{yaakw} ‘canoe, boat’ and the \fm{-x̱} postposition but this preverb is opaque for modern speakers.
+
+\ex\label{ex:motderiv-grouping-gh-list-xh}%
+\labels%
+\begin{tabular}[t]{lllcll}
+	& Path arg.	& Prefixes	& Conj.	& Repetitive	& Translation\\
+\midrule
+\tl	& NP-x̱		&		& g̱	& yei=…-ch	& ‘down along NP’\\
+\tl	& héen-x̱	&		& g̱	& yei=…-ch	& ‘down into water’\\
+\tl	& ká-x̱		& sha-		& g̱	& yei=…-ch	& ‘falling over, lying prone’\\
+\tl	& yaax̱=		&		& g̱	& yei=…-ch	& ‘aboard, into vehicle, embarking’\\
+\end{tabular}
+\xe
+
+The \fm{g̱} conjugation class motion derivations in (\ref{ex:motderiv-grouping-gh-list-naxh}) are characterized by the presence of the perlative postposition \fm{-náx̱} ‘via, through, across’ in their path arguments.
+The basis case is the motion derivation with \fm{NP-náx̱} which is compositional with the PP and the \fm{g̱} conjugation class.
+The derivation with \fm{ÿanax̱=} is historically derived from the perlative \fm{-náx̱} with the noun \fm{ÿán} ‘shore’ with its reconstructed meaning of ‘ground, earth, land’ from Proto-Na-Dene \fm[*]{ŋən}; for modern speakers \fm{ÿanax̱=} is opaque.
+
+\ex\label{ex:motderiv-grouping-gh-list-naxh}%
+\labels%
+\begin{tabular}[t]{llcll}
+	& Path arg.	& Conj.	& Repetitive	& Translation\\
+\midrule
+\tl	& NP-náx̱	& g̱	& yei=…-ch	& ‘down via, through NP’\\
+\tl	& ÿanax̱=	& g̱	& yei=…-ch	& ‘down into ground’\\
+\end{tabular}
+\xe
+
+The last \fm{g̱} conjugation class motion derivation is given in (\ref{ex:motderiv-grouping-gh-list-daxh}).
+This is not listed by \textcite{leer:1991} or \textcite{eggleston:2013a} but it appears in a few narratives and has been elicited as a part of motion derivation paradigms.
+It is straightforwardly composed of the ablative postposition \fm{-dáx̱} ‘from, departing’ with the spatial meaning of the \fm{g̱} conjugation class.
+
+\ex\label{ex:motderiv-grouping-gh-list-daxh}%
+\labels%
+\begin{tabular}[t]{llcll}
+	& Path arg.	& Conj.	& Repetitive	& Translation\\
+\midrule
+\tl	& NP-dáx̱	& g̱	& yei=…-ch	& ‘down from NP’\\
+\end{tabular}
+\xe
+
+\subsubsection{Motion derivations with \textit{n} conjugation}\label{sec:motderiv-grouping-n}
+
+There are 11 documented motion derivations that assign the \fm{n} conjugation class.
+They all have the same repetitive imperfective form: \fm{yoo= … i- … -k} with the alternating preverb \fm{yoo=} ‘back and forth, to and fro’, the stative prefix \fm{i-} \~\ \fm{ya-} \~\ \fm{wa-} \~\ \fm{μ-}, and the repetitive suffix \fm{-k}.
+There is one \fm{n} conjugation motion derivation without a path argument.
+The majority (6) of the other derivations are distinguished from the derivation without a path argument only by different postpositions.
+These are probably all compositional through the combination of the horizontal spatial orientation of the \fm{n} conjugation class and the spatial meaning of each individual postposition.
+
+\ex\label{ex:motderiv-grouping-n-list-basic}%
+\labels%
+\begin{tabular}[t]{llcll}
+	& Path arg.	& Conj.	& Repetitive	& Translation\\
+\midrule
+\tl	& —		& n	& yoo=…i-…-k	& ‘horizontally, laterally’\\
+\tl	& NP-x̱		& n	& yoo=…i-…-k	& ‘along NP’\\
+\tl	& NP-dé		& n	& yoo=…i-…-k	& ‘to NP (not necess.\ telic)’\\
+\tl	& NP-dáx̱	& n	& yoo=…i-…-k	& ‘away from NP’\\
+\tl	& NP-náx̱	& n	& yoo=…i-…-k	& ‘via, along, across, thru NP’\\
+\tl	& NP-náḵ	& n	& yoo=…i-…-k	& ‘leaving NP behind’\\
+\tl	& NP-g̱áa	& n	& yoo=…i-…-k	& ‘going to obtain NP; near NP’\\
+\end{tabular}
+\xe
+
+There is also a derivation with the punctual postposition \fm{NP-t} in (\ref{ex:motderiv-grouping-n-list-punct}).
+This is distinct from the other derivations listed in (\ref{ex:motderiv-grouping-n-list-basic}) because its meaning is not transparently a combination of the postposition and the \fm{n} conjugation class spatial orientation.
+The punctual postposition generally denotes a discrete point in space.
+In this context the meanings ‘going around NP (spot)’ and ‘going around in NP (area)’ seem to primarily arise from the \fm{n} conjugation class.
+But the meaning of the \fm{n} conjugation class does not normally contribute a rotational component to movement so it is unclear how this arises.
+
+\ex\label{ex:motderiv-grouping-n-list-punct}%
+\labels%
+\begin{tabular}[t]{llcll}
+	& Path arg.	& Conj.	& Repetitive	& Translation\\
+\midrule
+\tl	& NP-t		& n	& yoo=…i-…-k	& ‘circling, perambulating NP’\\
+\end{tabular}
+\xe
+
+There are two derivations with the preverb \fm{yux̱=} ‘out of house’ shown in (\ref{ex:motderiv-grouping-n-list-yuxh}).
+The preverb \fm{yux̱=} ‘out of house’ likely evolved from the distal deictic element \fm{yú} ‘that, there (far away)’ with the pertingent postpostion \fm{-x̱} ‘at, contacting’, but in modern Tlingit it is derivationally opaque; the modern combination of \fm{yú} and \fm{-x̱} would be \fm{yóox̱} [\ipa{júːχʷ}] with a long vowel and high tone.
+The derivation with \fm{NP-xʼ} includes the locative postposition \fm{-xʼ} \~\ \fm{-μ} \~\ \fm{-H} ‘at, on, in’ which is a straightforwardly compositional addition.
+
+\ex\label{ex:motderiv-grouping-n-list-yuxh}%
+\labels%
+\begin{tabular}[t]{llcll}
+	& Path arg.	& Conj.	& Repetitive	& Translation\\
+\midrule
+\tl	& yux̱=		& n	& yoo=…i-…-k	& ‘out of house’\\
+\tl	& NP-xʼ yux̱=	& n	& yoo=…i-…-k	& ‘out of house at NP’\\
+\end{tabular}
+\xe
+
+The last documented \fm{n} conjugation motion derivation is listed in (\ref{ex:motderiv-grouping-n-list-aa}).
+This \fm{áa} is transparently derived from the third person nonhuman pronoun \fm{á} ‘it’ and the vowel lengthening \fm{-μ} allomorph of the locative postposition \fm{-xʼ} \~\ \fm{-μ} \~\ \fm{-H} ‘at, in, on’.
+But the meaning of \fm{áa} here is somewhat idiomatic because it seems to be used non-referentially.
+Normally, \fm{á} ‘it’ has two interpretations: an entity interpretation where \fm{á} is a personal pronoun referring to one or more nonhuman entities i.e.\ ‘it, them’, and a spatial interpretation where \fm{á} is a locational pronoun referring to a defined location in space i.e.\ ‘there’.
+In both interpretations \fm{á} is a pronoun which can be bound either syntactically by an overt NP in the containing clause or discursively by an established referent in the discourse.
+But in the context of this motion derivation \fm{á} is apparently nonreferential in that it is not used with an overt NP; it might be bound by discourse context but this has not been established.
+If not always discourse bound then \fm{á} in this derivation must have the unusual property of being an indefinite location pronoun.
+It is plausible there are other indefinite location uses of \fm{á} but this needs to be demonstrated.
+
+\ex\label{ex:motderiv-grouping-n-list-aa}%
+\labels%
+\begin{tabular}[t]{llcll}
+	& Path arg.	& Conj.	& Repetitive	& Translation\\
+\midrule
+\tl	& áa		& n	& yoo=…i-…-k	& ‘around and about’\\
+\end{tabular}
+\xe
+
+\subsubsection{Motion derivations with \textit{∅} conjugation}\label{sec:motderiv-grouping-z}
+
+There are at least 51 motion derivations that assign the \fm{∅} conjugation class.
+They can be divided into four subclasses on the basis of which repetitive imperfective form they assign.
+Most of these subclasses based on repetitive imperfective form can be further subdivided according to path argument similarities and shared patterns of meaning.
+As with the other conjugation classes, many of the reported motion derivations can be analyzed as semantically compositional combinations of conjugation class and various parts of the path argument.
+
+\pex
+\a	\fm{-ch} repetitive (23)
+\a	\fm{-x̱} repetitive (15)
+\a	\fm{-μμL} repetitive (11)
+\a	\fm{yoo=…i-…-k} repetitive (2)
+\xe
+
+The quantity of documented derivations in each group does not correlate with their relative frequencies of use.
+The most frequent motion derivations of the \fm{∅} conjugation class seem to be the \fm{-μμL} repetitive derivations, followed by certain examples of the \fm{-ch} and \fm{-x̱} groups.
+
+
+
+\subsection{Overlapping forms among motion derivations}\label{sec:motderiv-overlap}
+
+Some motion derivations give rise to inflectional paradigms that overlap with other inflectional paradigms.
+This is not entirely specific to motion derivations because any particular inflectional form of a verb may or may not show all the properties of a verb base, and consequently of a motion derivation.
+For example, as noted in section \ref{sec:intro-conj-progprosp}, a progressive or prospective aspect form may indicate \fm{g̱} or \fm{g} conjugation class by the presence of the \fm{yei=} ‘down’ (\fm{g̱}) or \fm{kei=} ‘up’ (\fm{g}) preverbs.
+But neither \fm{n} or \fm{∅} conjugation class are distinct from each other in the same context as shown in (\ref{ex:motderiv-overlap-prosp}).
+
+\pex\label{ex:motderiv-overlap-prosp}%
+\a\label{ex:motderiv-overlap-prosp-z}%
+\exrtcmt{∅ conj.\ prospective}%
+\begingl
+	\gla	At @ \rlap{gug̱ax̱áa.} @ {} @ {} @ {} @ {} //
+	\glb	at= g- u- g̱a- \rt[²]{x̱a} -μμH //
+	\glc	\xx{4n·o}= \xx{gcnj}- \xx{irr}- \xx{mod}- \rt[²]{eat} -\xx{var} //
+	\gld	sth\• \rlap{\xx{zcnj}.\xx{prosp}.3.eat} {} {} {} {} //
+	\glft	‘She/he/it will eat something.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-prosp-n}%
+\exrtcmt{n conj.\ prospective}%
+\begingl
+	\gla	At @ \rlap{gug̱ahóon.} @ {} @ {} @ {} @ {} //
+	\glb	at= g- u- g̱a- \rt[²]{hun} -μμH //
+	\glc	\xx{4n·o}= \xx{gcnj}- \xx{irr}- \xx{mod}- \rt[²]{sell} -\xx{var} //
+	\gld	sth\• \rlap{\xx{ncnj}.\xx{prosp}.3.sell} {} {} {} {} //
+	\glft	‘She/he/it will sell something.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-prosp-gh}%
+\exrtcmt{g̱ conj.\ prospective}%
+\begingl
+	\gla	Yei @ at @ \rlap{gug̱asʼéilʼ.} @ {} @ {} @ {} @ {} //
+	\glb	yei= at= g- u- g̱a- \rt[²]{sʼelʼ} -μμH //
+	\glc	down= \xx{4n·o}= \xx{gcnj}- \xx{irr}- \xx{mod}- \rt[²]{tear} -\xx{var} //
+	\gld	down\• sth\• \rlap{\xx{g̱cnj}.\xx{prosp}.3.sell} {} {} {} {} //
+	\glft	‘She/he/it will tear something.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-prosp-g}%
+\exrtcmt{g conj.\ prospective}%
+\begingl
+	\gla	Kei @ at @ \rlap{gug̱asháat.} @ {} @ {} @ {} @ {} //
+	\glb	kei= at= g- u- g̱a- \rt[²]{shaᴴt} -μμH //
+	\glc	up= \xx{4n·o}= \xx{gcnj}- \xx{irr}- \xx{mod}- \rt[²]{grab} -\xx{var} //
+	\gld	up\• sth\• \rlap{\xx{gcnj}.\xx{prosp}.3.sell} {} {} {} {} //
+	\glft	‘She/he/it will grab something.’
+		//
+\endgl
+\xe
+
+Among the motion derivations there are a number of different cases of overlap in inflected verb forms.
+Most possibilities have yet to be exhaustively worked out; detailing possible overlap is an important task that needs to be completed both to help in language learning and to serve as a basis for further exploration of motion derivation and conjugation class semantics.
+
+One case of overlap arises with the motion derivations that lack an overt path argument.
+These are the \fm{n} conjugation derivation in (\ref{ex:motderiv-overlap-nopath-n}), the \fm{g̱} conjugation derivation in (\ref{ex:motderiv-overlap-nopath-gh}), and the \fm{g} conjugation derivation in (\ref{ex:motderiv-overlap-nopath-g}).
+These are naturally distinct with any forms that have a conjugation prefix specified by the conjugation class such as the imperatives shown earlier in (\ref{ex:motpos-motconj-nopp}).
+They are also distinct by preverbs (or their absence) in the progressive and prospective aspect forms.
+The repetitive imperfective aspect forms are distinct by suffix.
+But the perfective forms in (\ref{ex:motderiv-overlap-nopath-n-pfv})–(\ref{ex:motderiv-overlap-nopath-g-pfv}) lack either preverb or suffix to distinguish them, and all have the same \fm{-μμL} stem variation.
+Presumably these can be distinguished by discourse and pragmatic context of interpretation but they are identical in form.
+
+\pex\label{ex:motderiv-overlap-nopath-n}%
+\a\label{ex:motderiv-overlap-nopath-n-motderiv}%
+\exrtcmt{motion derivation}%
+	\fm{—} (\fm{n}; \fm{yoo=…i-…-k} repetitive) ‘horizontally, laterally’
+\a\label{ex:motderiv-overlap-nopath-n-prog}%
+\exrtcmt{n conj.\ progressive}%
+\begingl
+	\gla	Yaa @ \rlap{nx̱agút.} @ {} @ {} @ {} //
+	\glb	ÿaa= n- x̱- \rt[¹]{gut} -μH //
+	\glc	along= \xx{ncnj}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	along\• \rlap{\xx{ncnj}.\xx{prog}.I.go·\xx{sg}} {} {} {} //
+	\glft	‘I am going along.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-nopath-n-prosp}%
+\exrtcmt{n conj.\ prospective}%
+\begingl
+	\gla	\rlap{Kuḵagóot.} @ {} @ {} @ {} @ {} @ {} //
+	\glb	g- w- g̱- x̱a- \rt[¹]{gut} -μμH //
+	\glc	\xx{gcnj}- \xx{irr}- \xx{mod}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	\rlap{\xx{ncnj}.\xx{prosp}.I.go·\xx{sg}} {} {} {} {} {} //
+	\glft	‘I am going to go.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-nopath-n-repimpfv}%
+\exrtcmt{n conj.\ repetitive imperfective}%
+\begingl
+	\gla	Yoo @ \rlap{x̱aagútk.} @ {} @ {} @ {} @ {} //
+	\glb	yoo= x̱a- μ- \rt[¹]{gut} -μH -k //
+	\glc	\xx{alt}= \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	to·fro\• \rlap{\xx{ncnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} {} {} //
+	\glft	‘I am going back and forth, to and fro.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-nopath-n-pfv}%
+\exrtcmt{n conj.\ perfective}%
+\begingl
+	\gla	\rlap{X̱waagoot.} @ {} @ {} @ {} @ {} //
+	\glb	μw- x̱a- μ- \rt[¹]{gut} -μμL //
+	\glc	\xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	\rlap{\xx{ncnj}.\xx{pfv}.I.go·\xx{sg}} {} {} {} {} //
+	\glft	‘I went.’
+		//
+\endgl
+\xe
+
+\pex\label{ex:motderiv-overlap-nopath-gh}%
+\a\label{ex:motderiv-overlap-nopath-gh-motderiv}%
+\exrtcmt{motion derivation}%
+	\fm{—} (\fm{g̱}; \fm{yei=…-ch} repetitive) ‘downward, falling’
+\a\label{ex:motderiv-overlap-nopath-gh-prog}%
+\exrtcmt{g̱ conj.\ progressive}%
+\begingl
+	\gla	Yei @ \rlap{nx̱agút.} @ {} @ {} @ {} //
+	\glb	yei= n- x̱- \rt[¹]{gut} -μH //
+	\glc	down= \xx{ncnj}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	down\• \rlap{\xx{g̱cnj}.\xx{prog}.I.go·\xx{sg}} {} {} {} //
+	\glft	‘I am going down.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-nopath-gh-prosp}%
+\exrtcmt{g̱ conj.\ prospective}%
+\begingl
+	\gla	Yei \rlap{kḵwagóot.} @ {} @ {} @ {} @ {} @ {} //
+	\glb	yei= g- w- g̱- x̱a- \rt[¹]{gut} -μμH //
+	\glc	down= \xx{gcnj}- \xx{irr}- \xx{mod}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	down\• \rlap{\xx{g̱cnj}.\xx{prosp}.I.go·\xx{sg}} {} {} {} {} {} //
+	\glft	‘I am going to go down.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-nopath-gh-repimpfv}%
+\exrtcmt{g̱ conj.\ repetitive imperfective}%
+\begingl
+	\gla	Yei @ \rlap{x̱agútch.} @ {} @ {} @ {} //
+	\glb	yei= x̱a- \rt[¹]{gut} -μH -ch //
+	\glc	down= \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	down\• \rlap{\xx{g̱cnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} {} //
+	\glft	‘I repeatedly go down.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-nopath-gh-pfv}%
+\exrtcmt{g̱ conj.\ perfective}%
+\begingl
+	\gla	\rlap{X̱waagoot.} @ {} @ {} @ {} @ {} //
+	\glb	μw- x̱a- μ- \rt[¹]{gut} -μμL //
+	\glc	\xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	\rlap{\xx{g̱cnj}.\xx{pfv}.I.go·\xx{sg}} {} {} {} {} //
+	\glft	‘I went.’
+		//
+\endgl
+\xe
+
+\pex\label{ex:motderiv-overlap-nopath-g}%
+\a\label{ex:motderiv-overlap-nopath-g-motderiv}%
+\exrtcmt{motion derivation}%
+	\fm{—} (\fm{g}; \fm{kei=…-ch} repetitive) ‘upward’
+\a\label{ex:motderiv-overlap-nopath-g-prog}%
+\exrtcmt{g conj.\ progressive}%
+\begingl
+	\gla	Kei @ \rlap{nx̱agút.} @ {} @ {} @ {} //
+	\glb	kei= n- x̱- \rt[¹]{gut} -μH //
+	\glc	up= \xx{ncnj}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	up\• \rlap{\xx{g̱cnj}.\xx{prog}.I.go·\xx{sg}} {} {} {} //
+	\glft	‘I am going up.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-nopath-g-prosp}%
+\exrtcmt{g conj.\ prospective}%
+\begingl
+	\gla	Kei \rlap{kḵwagóot.} @ {} @ {} @ {} @ {} @ {} //
+	\glb	kei= g- w- g̱- x̱a- \rt[¹]{gut} -μμH //
+	\glc	up= \xx{gcnj}- \xx{irr}- \xx{mod}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	up\• \rlap{\xx{g̱cnj}.\xx{prosp}.I.go·\xx{sg}} {} {} {} {} {} //
+	\glft	‘I am going to go up.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-nopath-g-repimpfv}%
+\exrtcmt{g conj.\ repetitive imperfective}%
+\begingl
+	\gla	Kei @ \rlap{x̱agútch.} @ {} @ {} @ {} //
+	\glb	kei= x̱a- \rt[¹]{gut} -μH -ch //
+	\glc	up= \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	up\• \rlap{\xx{gcnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} {} //
+	\glft	‘I repeatedly go up.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-nopath-g-pfv}%
+\exrtcmt{g conj.\ perfective}%
+\begingl
+	\gla	\rlap{X̱waagoot.} @ {} @ {} @ {} @ {} //
+	\glb	μw- x̱a- μ- \rt[¹]{gut} -μμL //
+	\glc	\xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	\rlap{\xx{g̱cnj}.\xx{pfv}.I.go·\xx{sg}} {} {} {} {} //
+	\glft	‘I went.’
+		//
+\endgl
+\xe
+
+
+The \fm{∅} conjugation class motion derivation \fm{kei=} (\fm{∅}; \fm{-ch} repetitive) ‘upward’ overlaps with the \fm{g} conjugation class motion derivation \fm{—} (\fm{g}; \fm{kei=…-ch} repetitive) ‘upward’ in at least the prospective, progressive, and repetitive imperfective aspects.
+Compare the progressive in (\ref{ex:motderiv-overlap-kei-z-prog}), the prospective in (\ref{ex:motderiv-overlap-kei-z-prosp}), and the repetitive imperfective in (\ref{ex:motderiv-overlap-nopath-z-repimpfv}) with the identical forms above in (\ref{ex:motderiv-overlap-nopath-g}).
+The perfective in (\ref{ex:motderiv-overlap-kei-z-pfv}) remains distinct since it retains the \fm{kei=} preverb as part of the path argument and also has \fm{-μH} stem variation as predicted for a CVC root with \fm{∅} conjugation class in the perfective aspect.
+
+
+\pex\label{ex:motderiv-overlap-kei-z}%
+\a\label{ex:motderiv-overlap-kei-z-motderiv}%
+\exrtcmt{motion derivation}%
+	\fm{kei=} (\fm{∅}; \fm{-ch} repetitive) ‘upward’
+\a\label{ex:motderiv-overlap-kei-z-prog}%
+\exrtcmt{∅ conj.\ progressive}%
+\begingl
+	\gla	Kei @ \rlap{nx̱agút.} @ {} @ {} @ {} //
+	\glb	kei= n- x̱- \rt[¹]{gut} -μH //
+	\glc	up= \xx{ncnj}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	up\• \rlap{\xx{zcnj}.\xx{prog}.I.go·\xx{sg}} {} {} {} //
+	\glft	‘I am going up.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-kei-z-prosp}%
+\exrtcmt{∅ conj.\ prospective}%
+\begingl
+	\gla	Kei \rlap{kḵwagóot.} @ {} @ {} @ {} @ {} @ {} //
+	\glb	kei= g- w- g̱- x̱a- \rt[¹]{gut} -μμH //
+	\glc	up= \xx{gcnj}- \xx{irr}- \xx{mod}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	up\• \rlap{\xx{zcnj}.\xx{prosp}.I.go·\xx{sg}} {} {} {} {} {} //
+	\glft	‘I am going to go up.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-nopath-z-repimpfv}%
+\exrtcmt{∅ conj.\ repetitive imperfective}%
+\begingl
+	\gla	Kei @ \rlap{x̱agútch.} @ {} @ {} @ {} //
+	\glb	kei= x̱a- \rt[¹]{gut} -μH -ch //
+	\glc	up= \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	up\• \rlap{\xx{zcnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} {} //
+	\glft	‘I repeatedly go up.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-kei-z-pfv}%
+\exrtcmt{∅ conj.\ perfective}%
+\begingl
+	\gla	Kei @ \rlap{x̱waagút.} @ {} @ {} @ {} @ {} //
+	\glb	kei= μw- x̱a- μ- \rt[¹]{gut} -μH //
+	\glc	up= \xx{pfv}- \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	up \rlap{\xx{zcnj}.\xx{pfv}.I.go·\xx{sg}} {} {} {} {} //
+	\glft	‘I went up.’
+		//
+\endgl
+\xe
+
+There may also be an overlap between the path argumentless \fm{g} conjugation motion derivation and the \fm{∅} conjugation motion derivation \fm{yei=} (\fm{∅}; \fm{-ch} repetitive) ‘disembarking, exiting vehicle’.
+But this latter derivation is only given with the specialized meaning of exiting a vehicle and not with a more general meaning of downward direction \parencite[297]{leer:1991} so it may be semantically distinct from the more general \fm{g} conjugation class derivation meaning simply ‘downward’.
+
+Another particularly significant case of overlap is between the \fm{n} conjugation class motion derivation \fm{NP-dé} (\fm{n}; \fm{yoo=…i-…-k} repetitive) ‘to, toward NP’ and the \fm{∅} conjugation class motion derivation \fm{NP-\{t,x̱,dé\}} (\fm{∅}; \fm{-μμL} repetitive) ‘arriving at NP’.
+The \fm{n} conjugation class derivation in (\ref{ex:motderiv-overlap-de-n}) has the same postposition in all aspects.
+This overlaps partly with the \fm{∅} conjugation class derivation in (\ref{ex:motderiv-overlap-de-z}) which has the allative postposition \fm{-dé} only in the progressive and prospective aspects.
+
+\pex\label{ex:motderiv-overlap-de-n}%
+\a\label{ex:motderiv-overlap-de-n-motderiv}%
+\exrtcmt{motion derivation}%
+	\fm{NP-dé} (\fm{n}; \fm{yoo=…i-…-k} repetitive) ‘to, toward NP’
+\a\label{ex:motderiv-overlap-de-n-prog}%
+\exrtcmt{n conj.\ progressive}%
+\begingl
+	\gla	\rlap{Aandé} @ {} yaa @ \rlap{nx̱agút.} @ {} @ {} @ {} //
+	\glb	aan -dé ÿaa= n- x̱- \rt[¹]{gut} -μH //
+	\glc	town -\xx{all} along= \xx{ncnj}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to along\• \rlap{\xx{zcnj}.\xx{prog}.I.go·\xx{sg}} {} {} {} //
+	\glft	‘I am going to town.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-de-n-prosp}%
+\exrtcmt{n conj.\ prospective}%
+\begingl
+	\gla	\rlap{Aandé} @ {} \rlap{kḵwagóot.} @ {} @ {} @ {} @ {} @ {} //
+	\glb	aan -dé g- w- g̱- x̱a- \rt[¹]{gut} -μμH //
+	\glc	town -\xx{all} \xx{gcnj}- \xx{irr}- \xx{mod}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to \rlap{\xx{zcnj}.\xx{prosp}.I.go·\xx{sg}} {} {} {} {} {} //
+	\glft	‘I will go to town.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-de-n-repimpfv}%
+\exrtcmt{n conj.\ repetitive imperfective}%
+\begingl
+	\gla	\rlap{Aandé} @ {} yoo @ \rlap{x̱aagútk.} @ {} @ {} @ {} @ {} //
+	\glb	aan -dé yoo= x̱a- μ- \rt[¹]{gut} -μH -k //
+	\glc	town -\xx{all} \xx{alt}= \xx{1sg·s}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} -\xx{rep} //
+	\gld	town -to to/fro\· \rlap{\xx{ncnj}.\xx{impfv}.I.go·\xx{sg}.\xx{rep}} {} {} {} {} //
+	\glft	‘I repeatedly go to town.’, ‘I keep going toward town.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-de-n-hort}%
+\exrtcmt{n conj.\ hortative}%
+\begingl
+	\gla	\rlap{Aandé} @ {} \rlap{nḵagoot.} @ {} @ {} @ {} @ {} //
+	\glb	aan -dé n- g̱- x̱a- \rt[¹]{gut} -μμH //
+	\glc	town -\xx{all} \xx{ncnj}- \xx{mod}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to \rlap{\xx{ncnj}.\xx{hort}.I.go·\xx{sg}} {} {} {} {} //
+	\glft	‘Let me go to town.’, ‘I should go to town.’
+		//
+\endgl
+\xe
+
+\pex\label{ex:motderiv-overlap-de-z}%
+\a\label{ex:motderiv-overlap-de-z-motderiv}%
+\exrtcmt{motion derivation}%
+	\fm{NP-\{t,x̱,dé\}} (\fm{∅}; \fm{-μμL} repetitive) ‘arriving at NP’
+\a\label{ex:motderiv-overlap-de-z-prog}%
+\exrtcmt{∅ conj.\ progressive}%
+\begingl
+	\gla	\rlap{Aandé} @ {} yaa @ \rlap{nx̱agút.} @ {} @ {} @ {} //
+	\glb	aan -dé ÿaa= n- x̱- \rt[¹]{gut} -μH //
+	\glc	town -\xx{all} along= \xx{ncnj}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to along\• \rlap{\xx{zcnj}.\xx{prog}.I.go·\xx{sg}} {} {} {} //
+	\glft	‘I am going to town.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-de-z-prosp}%
+\exrtcmt{∅ conj.\ prospective}%
+\begingl
+	\gla	\rlap{Aandé} @ {} \rlap{kḵwagóot.} @ {} @ {} @ {} @ {} @ {} //
+	\glb	aan -dé g- w- g̱- x̱a- \rt[¹]{gut} -μμH //
+	\glc	town -\xx{all} \xx{gcnj}- \xx{irr}- \xx{mod}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to \rlap{\xx{zcnj}.\xx{prosp}.I.go·\xx{sg}} {} {} {} {} {} //
+	\glft	‘I will go to town.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-de-z-repimpfv}%
+\exrtcmt{∅ conj.\ repetitive imperfective}%
+\begingl
+	\gla	\rlap{Aanx̱} @ {} \rlap{x̱agoot.} @ {} @ {} //
+	\glb	aan -x̱ x̱a- \rt[¹]{gut} -μμL //
+	\glc	town -\xx{pert} \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -at \rlap{\xx{zcnj}.\xx{rep}·\xx{impfv}.I.go·\xx{sg}} {} {} //
+	\glft	‘I repeatedly get to town.’, ‘I keep getting to town.’
+		//
+\endgl
+\a\label{ex:motderiv-overlap-de-z-hort}%
+\exrtcmt{∅ conj.\ hortative}%
+\begingl
+	\gla	\rlap{Aant} @ {} \rlap{ḵagoot.} @ {} @ {} @ {} @ {} //
+	\glb	aan -dé {} g̱- x̱a- \rt[¹]{gut} -μμL //
+	\glc	town -\xx{all} \xx{zcnj}\· \xx{mod}- \xx{1sg·s}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	town -to \rlap{\xx{zcnj}.\xx{hort}.I.go·\xx{sg}} {} {} {} {} //
+	\glft	‘Let me get to town.’, ‘I should get to town.’
+		//
+\endgl
+\xe
+
+There is a possible semantic explanation for the overlap between the two motion derivations in (\ref{ex:motderiv-overlap-de-n}) and (\ref{ex:motderiv-overlap-de-z}).
+The \fm{∅} conjugation motion derivation in (\ref{ex:motderiv-overlap-de-z}) has a telicity meaning where the motion event is completed by arrival at the destination.
+The \fm{n} conjugation motion derivation in (\ref{ex:motderiv-overlap-de-n}) does not have a telicity meaning; although it is tempting to see this derivation as the atelic counterpart of the \fm{∅} conjugation derivation, it is generally interpreted as unspecified for telicity and so admits either meaning depending on context and circumstance.
+Given that the \fm{∅} conjugation class derivation is telic, combining it with the progressive aspect could plausibly be infelicitous since the progressive aspect describes eventualities that are ongoing and incomplete.
+The same is not clearly true for the progressive, but in this aspect it may be that the telicity of the unrealized eventuality is uncertain – and thus infelicitous? – because of some as yet unexplored interaction between modality and telicity.
+If this reasoning is correct then the progressive and prospective forms of the \fm{∅} conjugation class \fm{NP-\{t,x̱,dé\}} motion derivation are suppleted by the \fm{n} conjugation class \fm{NP-dé} motion derivation.
+This line of reasoning suggests that the repetitive imperfective \fm{NP-x̱} + \fm{…-μμL} of the \fm{NP-\{t,x̱,dé\}} motion derivation could also be a suppletive form from some other motion derivation, but this is more difficult to argue because of the lack of \fm{-μμL} repetitive imperfectives anywhere else. 
+
+The cases of overlap discussed here are not exhaustive.
+There are probably other cases of overlap in the inflectional forms produced by motion derivation.
+Investigating these should be part of a comprehensive review of documented motion derivations in comparison with attested forms in the textual corpus.
+
+\subsection{Application of motion derivations beyond motion verbs}\label{sec:motderiv-beyond}
+
+Although the motion derivations are generally only found with motion verb roots, there are a few that are occur more widely with verb roots that denote states, activities, and achievements.
+The most notable are the two listed in (\ref{ex:motderiv-beyond-two}) which are both \fm{∅} conjugation class motion derivations, though with different repetitive imperfective forms.
+
+\pex\label{ex:motderiv-beyond-two}%
+\a\label{ex:motderiv-beyond-two-term}%
+\exrtcmt{terminative}%
+	\fm{ÿan=} \~\ \fm{ÿax̱=} \~\ \fm{ÿánde} (\fm{∅}; \fm{-μμL} repetitive) ‘ashore, ending’
+\a\label{ex:motderiv-beyond-two-incep}%
+\exrtcmt{inceptive}%
+	\fm{g̱unayéi=}/\fm{g̱unéi=} (\fm{∅}; \fm{-x̱} repetitive) ‘starting, beginning’
+\xe
+
+First consider these with the motion root \fm{\rt[¹]{ḵux̱}} ‘go by boat or other vehicle’.
+The terminative in (\ref{ex:motderiv-beyond-goboat-term}) describes the ending of boat travel where the boat comes to rest at the shore.
+The inceptive in (\ref{ex:motderiv-beyond-goboat-incep}) describes the beginning of boat travel where the boat leaves from its starting position.
+
+\pex\label{ex:motderiv-beyond-goboat}%
+\a\label{ex:motderiv-beyond-goboat-term}%
+\begingl
+	\gla	Yan @ \rlap{wutuwaḵúx̱.} @ {} @ {} @ {} @ {} //
+	\glb	ÿan= wu- tu- wa- \rt[¹]{ḵux̱} -μH //
+	\glc	\xx{term}= \xx{pfv}- \xx{1pl·s}- \xx{stv}- \rt[¹]{go·boat} -\xx{var} //
+	\gld	ashore\· \rlap{\xx{zcnj}.\xx{pfv}.we.go·boat} {} {} {} {} //
+	\glft	‘We boated to shore.’
+		//
+\endgl
+\a\label{ex:motderiv-beyond-goboat-incep}%
+\begingl
+	\gla	G̱unayéi @ \rlap{wtuwaḵúx̱.} @ {} @ {} @ {} @ {} //
+	\glb	g̱unayéi= w- tu- wa- \rt[¹]{ḵux̱} -μH //
+	\glc	\xx{incep}= \xx{pfv}- \xx{1pl·s}- \xx{stv}- \rt[¹]{go·boat} -\xx{var} //
+	\gld	begin\· \rlap{\xx{zcnj}.\xx{pfv}.we.go·boat} {} {} {} {} //
+	\glft	‘We started boating.’
+		//
+\endgl
+\xe
+
+The preverb \fm{ÿan=} in (\ref{ex:motderiv-beyond-goboat-term}) is from the noun \fm{ÿán} ‘shore’ and so the meaning of ‘ashore’ is relatively transparent.
+The preverb is phonologically distinct from the noun because the predicted repetitive imperfective form \fm{ÿán-x̱} does not occur and instead the form is \fm{ÿax̱=} as shown in (\ref{ex:motderiv-beyond-goboat-term-repimpfv}).
+
+\ex\label{ex:motderiv-beyond-goboat-term-repimpfv}%
+\begingl
+	\gla	Yax̱ @ \rlap{tooḵoox̱.} @ {} @ {} //
+	\glb	ÿax̱= too- \rt[¹]{ḵux̱} -μμL //
+	\glc	\xx{term}= \xx{1pl·s}- \rt[¹]{go·boat} -\xx{var} //
+	\gld	ashore\· \rlap{\xx{zcnj}.\xx{rep}·\xx{impfv}.we.go·boat} {} {} //
+	\glft	‘We repeatedly boat ashore.’
+		//
+\endgl
+\xe
+
+The preverb \fm{g̱unayéi=} or \fm{g̱unéi=} in (\ref{ex:motderiv-beyond-goboat-incep}) is etymologically from the bound element \fm{g̱una-} ‘different, other’ and the noun \fm{yé} ‘place; way, manner; time’ with the vowel lengthening allomorph \fm{-μ} of the locative postposition \fm{-xʼ} \~\ \fm{-μ} \~\ \fm{-H} ‘at, on, in’.
+In the same group of motion derivations with \fm{-x̱} repetitives there is a \fm{NP-xʼ} (\fm{∅}; \fm{-x̱} repetitive) ‘nearing NP’ that probably reflects the original meaning of \fm{g̱unayéi} < \fm[*]{g̱unayéixʼ} as something like ‘nearing a different place’.
+The noun \fm{g̱unayé} ‘different place’ occurs elsewhere as an ordinary noun such as with the \fm{NP-dé} (\fm{n}; \fm{yoo=…i-…-k} repetitive) ‘to(ward) NP’ shown in (\ref{ex:motderiv-beyond-goboat-differentplace}).
+
+\ex\label{ex:motderiv-beyond-goboat-differentplace}%
+\begingl
+	\gla	\rlap{G̱unayéide} @ {} @ {} \rlap{woogoot.} @ {} @ {} @ {} //
+	\glb	g̱una- yé -de wu- μ- \rt[¹]{gut} -μμL //
+	\glc	other- place -\xx{all} \xx{pfv}- \xx{stv}- \rt[¹]{go·\xx{sg}} -\xx{var} //
+	\gld	\rlap{elsewhere} {} \·to \rlap{\xx{pfv}.go·\xx{sg}} {} {} {} //
+	\glft	‘She/he/it went elsewhere.’, ‘She/he/it went to a different place.’
+		//
+\endgl
+\xe
+
+Some speakers have apparently reinterpreted the contracted \fm{g̱unéi} as the only allowed form of the preverb, with \fm{g̱unayéi} reserved for the ordinary noun.
+It is not clear if this change is restricted to certain areas or if it is extensive across many communities.
+The dialect distribution of the two forms is also unclear even for those who permit both, and the conditions that license either form are also unclear.
+
+The two derivations in (\ref{ex:motderiv-beyond-two}) are widely applied to many different verbs.
+As implied by its label, the ‘terminative’ derivation in (\ref{ex:motderiv-beyond-two-term}) gives rise to a meaning of ending or terminating an event.
+And the inceptive in (\ref{ex:motderiv-beyond-two-incep}) similarly gives rise to a meaning of initiating or starting an event.
+The perfective forms in (\ref{ex:motderiv-beyond-sell}) and illustrate their application to the root \fm{\rt[²]{hun}} ‘sell’ which as shown earlier in (\ref{ex:intro-conj-impsell}) belongs to the \fm{n} conjugation class.
+The addition of the preverbs is not simply adjunction of a modifier to the verb: the conjugation class has shifted from \fm{n} to \fm{∅} as indicated by the change from a \fm{-μμL} stem in (\ref{ex:motderiv-beyond-sell-plain}) to a \fm{-μH} stem in (\ref{ex:motderiv-beyond-sell-term}) and (\ref{ex:motderiv-beyond-sell-incep}).
+
+\pex\label{ex:motderiv-beyond-sell}%
+\a\label{ex:motderiv-beyond-sell-plain}%
+\exrtcmt{n conj.\ perfective}%
+\begingl
+	\gla	Téel \rlap{wutuwahoon.} @ {} @ {} @ {} @ {} //
+	\glb	téel wu- tu- wa- \rt[²]{hun} -μμL //
+	\glc	shoe \xx{pfv}- \xx{1pl·s}- \xx{stv}- \rt[²]{sell} -\xx{var} //
+	\gld	shoe \rlap{\xx{ncnj}.\xx{pfv}.we.sell} {} {} {} {} //
+	\glft	‘We sold shoes.’
+		//
+\endgl
+\a\label{ex:motderiv-beyond-sell-term}%
+\exrtcmt{terminative ∅ conj.\ perfective}%
+\begingl
+	\gla	Téel yan @ \rlap{wutuwahún.} @ {} @ {} @ {} @ {} //
+	\glb	téel ÿan= wu- tu- wa- \rt[²]{hun} -μH //
+	\glc	shoe \xx{term}= \xx{pfv}- \xx{1pl·s}- \xx{stv}- \rt[²]{sell} -\xx{var} //
+	\gld	shoe done\· \rlap{\xx{zcnj}.\xx{pfv}.we.sell} {} {} {} {} //
+	\glft	‘We finished selling shoes.’, ‘We stopped selling shoes.’, ‘We are done selling shoes’, ‘We sold out of shoes.’
+		//
+\endgl
+\a\label{ex:motderiv-beyond-sell-incep}%
+\exrtcmt{inceptive ∅ conj.\ perfective}%
+\begingl
+	\gla	Téel g̱unayéi @ \rlap{wutuwahún.} @ {} @ {} @ {} @ {} //
+	\glb	téel g̱unayéi= wu- tu- wa- \rt[²]{hun} -μH //
+	\glc	shoe \xx{incep}= \xx{pfv}- \xx{1pl·s}- \xx{stv}- \rt[²]{sell} -\xx{var} //
+	\gld	shoe begin\· \rlap{\xx{zcnj}.\xx{pfv}.we.sell} {} {} {} {} //
+	\glft	‘We began selling shoes.’, ‘We have started to sell shoes.’
+		//
+\endgl
+\xe
+
+Another predictable consequence of applying the motion derivations in (\ref{ex:motderiv-beyond-two}) to the root \fm{\rt[²]{hun}} ‘sell’ is that the imperfective aspect grammaticality conditions are changed.
+The activity imperfective in (\ref{ex:motderiv-beyond-sell-impfv-plain}) is no longer grammatical in (\ref{ex:motderiv-beyond-sell-impfv-term}) and (\ref{ex:motderiv-beyond-sell-impfv-incep}); just as with motion verbs a basic imperfective aspect form is disallowed.
+Similarly, the repetitive imperfective aspect changes from the \fm{yoo=…i-…-k} form in (\ref{ex:motderiv-beyond-sell-repimpfv-plain}) predicted by the \fm{n} conjugation class to the \fm{-μμL} form in (\ref{ex:motderiv-beyond-sell-impfv-term}) for the \fm{ÿan=} \~\ \fm{ÿax̱=} \~\ \fm{ÿánde} derivation and the \fm{-x̱} form in (\ref{ex:motderiv-beyond-sell-impfv-incep}) for the \fm{g̱unayéi=}/\fm{g̱unéi=} derivation.
+
+\pex\label{ex:motderiv-beyond-sell-impfv}%
+\a\label{ex:motderiv-beyond-sell-impfv-plain}%
+\exrtcmt{activity imperfective}%
+\begingl
+	\gla	Téel \rlap{toohóon.} @ {} @ {} //
+	\glb	téel too- \rt[²]{hun} -μμH //
+	\glc	shoe \xx{1pl·s}- \rt[²]{sell} -\xx{var} //
+	\gld	shoe \rlap{\xx{ncnj}.\xx{impfv}.we.sell} {} {} //
+	\glft	‘We sell shoes.’, ‘We are selling shoes.’
+		//
+\endgl
+\a\label{ex:motderiv-beyond-sell-impfv-term}%
+\ljudge{*}%
+\exrtcmt{*terminative activity imperfective}%
+\begingl
+	\gla	Téel yan @ \rlap{toohóon.} @ {} @ {} //
+	\glb	téel ÿan= too- \rt[²]{hun} -μμH //
+	\glc	shoe \xx{term}= \xx{1pl·s}- \rt[²]{sell} -\xx{var} //
+	\gld	shoe done\· \rlap{\xx{zcnj}.\xx{impfv}.we.sell} {} {} //
+	\glft	intended: ‘We are finishing selling shoes.’, ‘We are quitting selling shoes.’
+		//
+\endgl
+\a\label{ex:motderiv-beyond-sell-impfv-incep}%
+\ljudge{*}%
+\exrtcmt{*inceptive activity imperfective}%
+\begingl
+	\gla	Téel g̱unayéi @ \rlap{toohóon.} @ {} @ {} @ {} @ {} //
+	\glb	téel g̱unayéi= too- \rt[²]{hun} -μμH //
+	\glc	shoe \xx{incep}= \xx{1pl·s}- \rt[²]{sell} -\xx{var} //
+	\gld	shoe begin\· \rlap{\xx{zcnj}.\xx{impfv}.we.sell} {} {} {} {} //
+	\glft	intended: ‘We are starting to sell shoes.’
+		//
+\endgl
+\xe
+
+\pex\label{ex:motderiv-beyond-sell-repimpfv}%
+\a\label{ex:motderiv-beyond-sell-repimpfv-plain}%
+\exrtcmt{n conj.\ repetitive imperfective}%
+\begingl
+	\gla	Téel yoo @ \rlap{tuwahúnkw.} @ {} @ {} @ {} @ {} //
+	\glb	téel yoo= tu- wa- \rt[²]{hun} -μH -kw //
+	\glc	shoe \xx{alt}= \xx{1pl·s}- \xx{stv}- \rt[²]{sell} -\xx{var} -\xx{rep} //
+	\gld	shoe \xx{alt}\• \rlap{\xx{ncnj}.\xx{impfv}.we.sell.\xx{rep}} {} {} {} {} //
+	\glft	‘We repeatedly selling shoes.’, ‘We keep trying to sell shoes.’
+		//
+\endgl
+\a\label{ex:motderiv-beyond-sell-impfv-term}%
+\exrtcmt{terminative ∅ conj. repetitive imperfective}%
+\begingl
+	\gla	Téel yax̱ @ \rlap{toohoon.} @ {} @ {} @ {} @ {} //
+	\glb	téel ÿax̱= tu- \rt[²]{hun} -μμL //
+	\glc	shoe \xx{term}= \xx{1pl·s}- \rt[²]{sell} -\xx{var} //
+	\gld	shoe done\· \rlap{\xx{zcnj}.\xx{pfv}.we.sell} {} {} {} {} //
+	\glft	‘We repeatedly finish selling shoes.’, ‘We keep selling out of shoes.’
+		//
+\endgl
+\a\label{ex:motderiv-beyond-sell-impfv-incep}%
+\exrtcmt{inceptive ∅ conj. repetitive imperfective}%
+\begingl
+	\gla	Téel g̱unayéi @ \rlap{toohúnx̱w.} @ {} @ {} @ {} //
+	\glb	téel g̱unayéi= too- \rt[²]{hun} -μH -x̱w //
+	\glc	shoe \xx{incep}= \xx{1pl·s}- \rt[²]{sell} -\xx{var} -\xx{rep} //
+	\gld	shoe begin\· \rlap{\xx{zcnj}.\xx{impfv}.we.sell.\xx{rep}} {} {} {} //
+	\glft	‘We keep starting to sell shoes.’, ‘We try to start selling shoes.’
+		//
+\endgl
+\xe
+
+
+
+evidence for other applications of motion derivations to non-motion verbs
+
+possibility that among the non-motion verbs, many or all of the \fm{n} / \fm{g̱} / \fm{g} conjugation class verbs may have a path argumentless motion derivation
+
+
+
+\clearpage
+\section{Position and motion root overlap}\label{sec:motposroot}
+
+only distinct position verb root is \fm{\rt{.a}} ‘sg.\ sit’ which contrasts with \fm{\rt{nuk}} ‘sg.\ sit’
+
+illustrate overlap with \fm{\rt{.at}} ‘pl.\ go’
+
+derivations that seem to be unique to positional versus motion, e.g.\ \fm{l-\rt{.at}} ‘building be positioned’
+
+complete list of known positional verbs?
+
+\clearpage
+\raggedyright
+\printbibliography\label{sec:bibliography} 
+
+\end{document}
