@@ -253,3 +253,9 @@ TSWLatexianTemp*
 
 # standalone packages
 *.sta
+
+# Mac crud
+.DS_Store
+
+# PDF output files
+*.pdf
